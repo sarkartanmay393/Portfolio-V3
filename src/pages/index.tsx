@@ -1,6 +1,9 @@
+import { Box, CssBaseline, GlobalStyles, Typography, useTheme } from "@mui/material";
 import Head from "next/head";
 
 export default function Home() {
+  const theme = useTheme();
+
   return (
     <>
       <Head>
@@ -11,9 +14,36 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="font-semibold lg:text-[1.4rem]">TSX is under construction!</h1>
-      </main>
+
+      <GlobalStyles
+        styles={{ body: { backgroundColor: theme.palette.background.default } }}
+      />
+
+      <CssBaseline enableColorScheme />
+
+      <Box
+        sx={{
+          display: "flex",
+          minHeight: "100vh",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            [theme.breakpoints.down("mobile")]: {
+              fontSize: "1rem",
+            },
+            [theme.breakpoints.up("tablet")]: {
+              fontSize: "2rem",
+            },
+            color: theme.palette.text.primary,
+          }}
+        >
+          TSX is under construction!
+        </Typography>
+      </Box>
     </>
   );
 }
