@@ -26,12 +26,26 @@ const Layout = ({ Title, children }: CAppType) => {
         sx={{
           display: "flex",
           minHeight: "100vh",
-          alignItems: "center",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
         }}
       >
-        {children}
+        <Box
+          sx={{
+            [theme.breakpoints.up("mobile")]: {
+              width: "90vw",
+            },
+            [theme.breakpoints.up("tablet")]: {
+              width: "75vw",
+            },
+            [theme.breakpoints.up("laptop")]: {
+              width: "65vw",
+            },
+          }}
+        >
+          {children}
+        </Box>
       </Box>
     </>
   );
