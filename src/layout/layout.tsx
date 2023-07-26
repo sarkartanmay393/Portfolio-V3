@@ -1,6 +1,7 @@
 import Head from "next/head";
 import type CAppType from "~/interfaces/customAppType";
 import { Box, useTheme, CssBaseline, GlobalStyles } from "@mui/material";
+import NavigationBar from "~/components/NavigationBar";
 
 const Layout = ({ Title, children }: CAppType) => {
   const theme = useTheme();
@@ -31,6 +32,8 @@ const Layout = ({ Title, children }: CAppType) => {
           justifyContent: "center",
         }}
       >
+        <NavigationBar />
+
         <Box
           sx={{
             [theme.breakpoints.up("mobile")]: {

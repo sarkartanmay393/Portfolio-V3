@@ -4,7 +4,9 @@ import HomePage from "./home";
 export default function Home() {
   return (
     <Layout Title={"Home"}>
-      <HomePage />
+      <>
+        <HomePage />
+      </>
     </Layout>
   );
 }

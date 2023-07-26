@@ -73,6 +73,19 @@ const Theme = (mode: PaletteMode) => {
           ? { textColor: common.white }
           : { textColor: common.white }),
       },
+      navigation: {
+        ...(mode === "light"
+          ? {
+              bgColor: "rgba(0, 0, 0, 0.8)",
+              textColor: common.white,
+              activeTextColor: common.black,
+            }
+          : {
+              bgColor: "rgba(255, 255, 255, 0.2)",
+              textColor: common.white,
+              activeTextColor: common.black,
+            }),
+      },
     },
   } as ThemeOptions;
 };
@@ -83,12 +96,23 @@ declare module "@mui/material/styles" {
       button: {
         textColor: string;
       };
+      navigation: {
+        bgColor: string;
+        textColor: string;
+        activeTextColor: string;
+      };
     };
   }
+
   interface ThemeOptions {
     custom?: {
       button?: {
         textColor?: string;
+      };
+      navigation?: {
+        bgColor?: string;
+        textColor?: string;
+        activeTextColor?: string;
       };
     };
   }
