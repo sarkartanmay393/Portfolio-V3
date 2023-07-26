@@ -1,35 +1,26 @@
-import { Box, CssBaseline, GlobalStyles, Typography, useTheme } from "@mui/material";
-import Head from "next/head";
+import { Button, Typography, useTheme } from "@mui/material";
+import Layout from "~/layout/layout";
+import { useStoreActions, useStoreState } from "~/store/typedHooks";
 
 export default function Home() {
   const theme = useTheme();
 
+  const mode = useStoreState((state) => state.theme.mode);
+  const setTheme = useStoreActions((state) => state.setTheme);
+
   return (
-    <>
-      <Head>
-        <title>TSX</title>
-        <meta
-          name="description"
-          content="Personal portfolio of software engineer cum full stack web developer."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <GlobalStyles
-        styles={{ body: { backgroundColor: theme.palette.background.default } }}
-      />
-
-      <CssBaseline enableColorScheme />
-
-      <Box
-        sx={{
-          display: "flex",
-          minHeight: "100vh",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+    <Layout Title={"Home"}>
+      <>
+        <Button
+          sx={{
+            color: theme.palette.text.primary,
+          }}
+          onClick={() => {
+            mode === "light" ? setTheme("dark") : setTheme("light");
+          }}
+        >
+          {mode === "light" ? "Dark" : "Light"}
+        </Button>
         <Typography
           sx={{
             [theme.breakpoints.down("mobile")]: {
@@ -43,7 +34,7 @@ export default function Home() {
         >
           TSX is under construction!
         </Typography>
-      </Box>
-    </>
+      </>
+    </Layout>
   );
 }
