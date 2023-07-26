@@ -6,11 +6,35 @@ html,
 body {
   padding: 0;
   margin: 0;
-
-  font-family: "Manrope", sans-serif;
   font-size: 62.5%;
 }
 
 body {
   min-height: 100%;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 5px #2ba805;
+  }
+  40% {
+    box-shadow: 0 0 15px #2ba805;
+  }
+  50% {
+    box-shadow: 0 0 20px #49e819;
+  }
+  100% {
+    box-shadow: 0 0 5px #2ba805;
+  }
+}
+
+.green_dot {
+  border-radius: 100%;
+  animation: glowing 1300ms infinite;
+
+  border: 0.1px solid #055916be;
+}
+
+.green_dot::selection {
+  background-color: #00000000;
 }

@@ -3,6 +3,7 @@ import {
   type ThemeOptions,
   darkScrollbar,
 } from "@mui/material";
+import { common } from "@mui/material/colors";
 
 const Theme = (mode: PaletteMode) => {
   return {
@@ -19,14 +20,17 @@ const Theme = (mode: PaletteMode) => {
         ? {
             primary: {
               main: "#ffffff",
+              light: "rgba(255, 255, 255, 0.2)",
             },
             secondary: {
               main: "#109c51",
             },
             text: {
-              hint: "#2EB872",
+              primary: common.white,
+              secondary: "rgba(255, 255, 255, 0.6)",
+              contrastColor: common.black,
             },
-            divider: "rgba(210,205,205,0.2)",
+            divider: "rgba(210,205,205,1)",
             background: {
               default: "#000000",
               paper: "#000000",
@@ -35,17 +39,20 @@ const Theme = (mode: PaletteMode) => {
         : {
             primary: {
               main: "#ffffff",
+              light: "rgba(0, 0, 0, 0.7)",
             },
             secondary: {
               main: "#109c51",
             },
             text: {
-              hint: "#2EB872",
+              primary: common.black,
+              secondary: "rgba(0, 0, 0, 0.6)",
+              contrastColor: common.white,
             },
             divider: "rgba(90,89,89,0.1)",
             background: {
-              paper: "#fff",
-              default: "#F9FAFF",
+              paper: "#f8f8ff",
+              default: "#f8f8ff",
             },
           }),
     },
@@ -57,10 +64,34 @@ const Theme = (mode: PaletteMode) => {
         desktop: 1200,
       },
     },
+    typography: {
+      fontFamily: "Manrope, sans-serif",
+    },
+    custom: {
+      button: {
+        ...(mode === "light"
+          ? { textColor: common.white }
+          : { textColor: common.white }),
+      },
+    },
   } as ThemeOptions;
 };
 
 declare module "@mui/material/styles" {
+  interface Theme {
+    custom: {
+      button: {
+        textColor: string;
+      };
+    };
+  }
+  interface ThemeOptions {
+    custom?: {
+      button?: {
+        textColor?: string;
+      };
+    };
+  }
   interface BreakpointOverrides {
     xs: false;
     sm: false;
@@ -71,6 +102,12 @@ declare module "@mui/material/styles" {
     tablet: true;
     laptop: true;
     desktop: true;
+  }
+  interface TypeText {
+    primary: string;
+    secondary: string;
+    contrastColor: string;
+    disabled: string;
   }
 }
 

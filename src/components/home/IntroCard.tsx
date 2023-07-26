@@ -1,9 +1,9 @@
-import { Typography, Box, Button, useTheme } from "@mui/material";
 import Image from "next/image";
+import { Typography, Box, Button, useTheme } from "@mui/material";
 
-import OutboundIcon from "@mui/icons-material/Outbound";
-import UpcomingIcon from "@mui/icons-material/Upcoming";
-import GreenDot from "../assets/green_dot.svg";
+import SendSharpIcon from "@mui/icons-material/SendSharp";
+import GreenDot from "../../assets/green_dot.svg";
+import MessageCross from "../../assets/message_cross.svg";
 
 const IntroCard = () => {
   const theme = useTheme();
@@ -24,12 +24,20 @@ const IntroCard = () => {
           [theme.breakpoints.up("tablet")]: {
             fontSize: "4.8rem",
           },
-          fontWeight: "600",
+
+          fontWeight: "800",
           color: theme.palette.text.primary,
           lineHeight: "100%",
+
+          "::selection": {
+            color:
+              theme.palette.mode === "light"
+                ? theme.palette.secondary.main
+                : theme.palette.secondary.light,
+          },
         }}
       >
-        {`Hey, I'm Tanmay -- the tech warrior who weaves frontend shots.`}
+        {`Hey, I'm Tanmay -- the full-stack warrior who crafts digital masterpieces`}
       </Typography>
       <Typography
         sx={{
@@ -39,25 +47,32 @@ const IntroCard = () => {
           [theme.breakpoints.up("tablet")]: {
             fontSize: "2.2rem",
           },
-          fontWeight: "500",
-          lineHeight: "120%",
-
+          fontWeight: "600",
+          lineHeight: "1.3",
           color: theme.palette.text.secondary,
+          "::selection": {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.text.primary,
+          },
         }}
       >
-        {`Blending design with code, I create polished, distinctive digital 
-        products for founders, startups, and creators, boosting their online
-        brand presence.`}
+        {`Fusing Design and Code, With a focus on polished,
+        distinctive products, I elevate brand presence, leave lasting
+        impressions on users, founders, startups, and creators. Driven by
+        passion and creativity, I thrive on pushing boundaries in the
+        evolving tech landscape.`}
       </Typography>
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          gap: "1rem",
+          cursor: "default",
         }}
       >
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        <Image src={GreenDot} alt="availability dot" />
+        <Image className="green_dot" src={GreenDot} alt="availability dot" />
         <Typography
           sx={{
             [theme.breakpoints.up("mobile")]: {
@@ -68,6 +83,10 @@ const IntroCard = () => {
             },
             fontWeight: "400",
             color: theme.palette.text.secondary,
+            "::selection": {
+              backgroundColor: "rgba(0,0,0,0)",
+              // color: theme.palette.secondary.contrastText,
+            },
           }}
         >
           {`Available for new opportunities`}
@@ -91,8 +110,7 @@ const IntroCard = () => {
           sx={{
             display: "flex",
             flexDirection: "row",
-            alignItems: "center",
-            gap: "4px",
+            gap: "0.8rem",
 
             padding: "0.8rem 1.6rem",
             borderRadius: "2.8rem",
@@ -118,12 +136,12 @@ const IntroCard = () => {
               },
               fontWeight: "600",
               textTransform: "lowercase",
-              color: theme.palette.text.primary,
+              color: theme.custom.button.textColor,
             }}
           >
             Hire me
           </Typography>
-          <OutboundIcon sx={{ marginTop: "2px" }} />
+          <SendSharpIcon sx={{ fontSize: "1.8rem", translate: "0 1.5px" }} />
         </Button>
         <Button
           sx={{
@@ -132,13 +150,17 @@ const IntroCard = () => {
             alignItems: "center",
             gap: "0.6rem",
 
-            padding: "0.8rem 1.6rem",
+            padding: "0.8rem 2.6rem",
             borderRadius: "2.8rem",
             backgroundColor: theme.palette.primary.contrastText,
             border: `0.05rem solid ${theme.palette.primary.light}`,
 
             [theme.breakpoints.between("mobile", "tablet")]: {
               "min-width": "100%",
+            },
+
+            ":hover": {
+              backgroundColor: theme.palette.primary.light,
             },
           }}
         >
@@ -152,12 +174,16 @@ const IntroCard = () => {
               },
               fontWeight: "600",
               textTransform: "lowercase",
-              color: theme.palette.text.primary,
+              color: theme.custom.button.textColor,
             }}
           >
             leave a message
           </Typography>
-          <UpcomingIcon />
+          <Image
+            width={20}
+            src={MessageCross as string}
+            alt="leave a message using github"
+          />
         </Button>
       </Box>
     </Box>

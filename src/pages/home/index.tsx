@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import IntroCard from "~/components/IntroCard";
+import IntroCard from "~/components/home/IntroCard";
 
 const HomePage = () => {
 

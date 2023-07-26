@@ -1,6 +1,6 @@
-<svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Available Dot" filter="url(#filter0_d_31_246)">
-<circle cx="18.5" cy="18.5" r="6.5" fill="#2EB872"/>
+<circle cx="18.5" cy="18.5" r="6.5" fill="rgba(46,184,115,0.849)"/>
 <circle cx="18.5" cy="18.5" r="6.55" stroke="black" stroke-width="0.1" stroke-linejoin="round"/>
 </g>
 <defs>
