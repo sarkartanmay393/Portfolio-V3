@@ -9,11 +9,13 @@ import { StoreProvider, createStore } from "easy-peasy";
 import { ThemeProvider, createTheme } from "@mui/material";
 import type GlobalStoreModel from "~/interfaces/globalStoreModel";
 
-import "@fontsource/inter/100.css";
-import "@fontsource/inter/200.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/700.css";
+import "@fontsource/manrope/200.css";
+import "@fontsource/manrope/300.css";
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/manrope/800.css";
 
 // Initialised Global State
 const store = createStore<GlobalStoreModel>(globalStore);
