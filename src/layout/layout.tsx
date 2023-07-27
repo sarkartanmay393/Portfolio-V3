@@ -1,6 +1,6 @@
 import Head from "next/head";
 import type CAppType from "~/interfaces/customAppType";
-import { Box, useTheme, CssBaseline, GlobalStyles } from "@mui/material";
+import { Box, useTheme, CssBaseline } from "@mui/material";
 import NavigationBar from "~/components/NavigationBar";
 
 const Layout = ({ Title, children }: CAppType) => {
@@ -17,10 +17,6 @@ const Layout = ({ Title, children }: CAppType) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <GlobalStyles
-        styles={{ body: { backgroundColor: theme.palette.background.default } }}
-      />
-
       <CssBaseline enableColorScheme />
 
       <Box
@@ -30,6 +26,7 @@ const Layout = ({ Title, children }: CAppType) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          overflowY: "scroll",
         }}
       >
         <NavigationBar />

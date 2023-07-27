@@ -4,6 +4,8 @@ import { Typography, Box, Button, useTheme } from "@mui/material";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
+import VectorLogo from "../../assets/logo.svg";
+
 
 const IntroCard = () => {
   const theme = useTheme();
@@ -14,8 +16,40 @@ const IntroCard = () => {
         display: "flex",
         flexDirection: "column",
         gap: "1.6rem",
+        height: "100vh",
+        justifyContent: "center",
+        scrollSnapAlign: 'start',
+        // [theme.breakpoints.up('laptop')]: {
+        //   marginTop: '4rem'
+        // },
       }}
     >
+      <Box
+        sx={{
+          marginBottom: '1rem',
+          display: "flex",
+          alignItems: "center",
+          gap: "0.8rem",
+
+          [theme.breakpoints.up("laptop")]: {
+            display: "none",
+          },
+        }}
+      >
+        <Image src={VectorLogo as string} alt="" />
+        <Typography
+          sx={{
+            [theme.breakpoints.down("laptop")]: {
+              fontSize: "4rem",
+            },
+            fontWeight: "600",
+            textTransform: "lowercase",
+            color: String(theme.palette.primary),
+          }}
+        >
+          tsx
+        </Typography>
+      </Box>
       <Typography
         sx={{
           [theme.breakpoints.up("mobile")]: {
@@ -160,7 +194,7 @@ const IntroCard = () => {
             },
 
             ":hover": {
-              backgroundColor: theme.palette.primary.light,
+              backgroundColor: theme.custom.button.onHoverBgColor,
             },
           }}
         >

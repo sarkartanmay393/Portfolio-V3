@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { useStoreActions } from "~/store/typedHooks";
 
 import VectorLogo from "../assets/logo.svg";
-import { useTheme } from "@mui/material";
-import { Padding } from "@mui/icons-material";
 
 const NavigationBar = () => {
   const theme = useTheme();
@@ -17,6 +15,7 @@ const NavigationBar = () => {
   return (
     <Box
       sx={{
+        zIndex: "1",
         marginY: "5rem",
         display: "flex",
         alignItems: "center",
@@ -24,22 +23,23 @@ const NavigationBar = () => {
         borderRadius: "2.8rem",
         padding: "0.1rem",
 
-        justifyContent: "space-between",
+        justifyContent: "center",
         backgroundColor: theme.custom.navigation.bgColor,
 
-        [theme.breakpoints.only("mobile")]: {
-          justifyContent: "center",
-        },
-
-        [theme.breakpoints.up("mobile")]: {
-          width: "88%",
-        },
-        [theme.breakpoints.up("tablet")]: {
-          width: "82%",
+        position: "fixed",
+        
+        [theme.breakpoints.down("laptop")]: {
+          bottom: "0",
         },
         [theme.breakpoints.up("laptop")]: {
           width: "68%",
+          justifyContent: "space-between",
+          top: "0"
         },
+
+        boxShadow: `0px 0px 12px 0px `
+          .concat(theme.palette.divider)
+          .replace("1)", "0.6)"),
       }}
     >
       <Box
@@ -48,7 +48,7 @@ const NavigationBar = () => {
           alignItems: "center",
           gap: "0.8rem",
 
-          [theme.breakpoints.down("tablet")]: {
+          [theme.breakpoints.down("laptop")]: {
             display: "none",
           },
         }}
@@ -96,6 +96,9 @@ const NavigationBar = () => {
               ":hover > .tab_typography": {
                 fontWeight: "600",
               },
+              ":hover": {
+                backgroundColor: theme.custom.button.onHoverBgColor,
+              },
               backgroundColor: tab.active ? theme.palette.primary.main : "",
             }}
           >
@@ -131,14 +134,15 @@ const NavigationBar = () => {
       </Box>
       <Box
         sx={{
-          translate: "-1rem 2px",
-          [theme.breakpoints.only("mobile")]: {
+          translate: "-1.2rem 2px",
+          [theme.breakpoints.down("laptop")]: {
             display: "none",
           },
         }}
       >
         <input
           id="toggle"
+          aria-label=""
           className="toggle"
           type="checkbox"
           onClick={handleThemeToggle}

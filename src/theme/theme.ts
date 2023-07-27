@@ -20,38 +20,36 @@ const Theme = (mode: PaletteMode) => {
         ? {
             primary: {
               main: "#ffffff",
-              light: "rgba(255, 255, 255, 0.2)",
+              // light: "rgba(255, 255, 255, 0.2)",
             },
             secondary: {
               main: "#109c51",
             },
             text: {
               primary: common.white,
-              secondary: "rgba(255, 255, 255, 0.6)",
-              contrastColor: common.black,
+              // secondary: "rgba(255, 255, 255, 0.6)",
+              // contrastColor: common.black,
             },
             divider: "rgba(210,205,205,1)",
             background: {
               default: "#000000",
-              paper: "#000000",
             },
           }
         : {
             primary: {
               main: "#ffffff",
-              light: "rgba(0, 0, 0, 0.7)",
+              // light: "rgba(0, 0, 0, 0.7)",
             },
             secondary: {
               main: "#109c51",
             },
             text: {
               primary: common.black,
-              secondary: "rgba(0, 0, 0, 0.6)",
-              contrastColor: common.white,
+              // secondary: "rgba(0, 0, 0, 0.6)",
+              // contrastColor: common.white,
             },
-            divider: "rgba(90,89,89,0.1)",
+            divider: "rgba(0,0,0,0.6)",
             background: {
-              paper: "#f8f8ff",
               default: "#f8f8ff",
             },
           }),
@@ -70,18 +68,24 @@ const Theme = (mode: PaletteMode) => {
     custom: {
       button: {
         ...(mode === "light"
-          ? { textColor: common.white }
-          : { textColor: common.white }),
+          ? {
+              textColor: common.white,
+              onHoverBgColor: "rgba(0, 0, 0, 0.5)",
+            }
+          : {
+              textColor: common.white,
+              onHoverBgColor: "rgba(255, 255, 255, 0.2)",
+            }),
       },
       navigation: {
         ...(mode === "light"
           ? {
-              bgColor: "rgba(0, 0, 0, 0.8)",
+              bgColor: "rgba(60, 60, 60, 0.9)",
               textColor: common.white,
               activeTextColor: common.black,
             }
           : {
-              bgColor: "rgba(255, 255, 255, 0.2)",
+              bgColor: "rgba(80, 80, 80, 0.9)",
               textColor: common.white,
               activeTextColor: common.black,
             }),
@@ -95,6 +99,7 @@ declare module "@mui/material/styles" {
     custom: {
       button: {
         textColor: string;
+        onHoverBgColor: string;
       };
       navigation: {
         bgColor: string;
@@ -108,6 +113,7 @@ declare module "@mui/material/styles" {
     custom?: {
       button?: {
         textColor?: string;
+        onHoverBgColor?: string;
       };
       navigation?: {
         bgColor?: string;
@@ -127,12 +133,12 @@ declare module "@mui/material/styles" {
     laptop: true;
     desktop: true;
   }
-  interface TypeText {
-    primary: string;
-    secondary: string;
-    contrastColor: string;
-    disabled: string;
-  }
+  // interface TypeText {
+  //   primary: string;
+  //   secondary: string;
+  //   contrastColor: string;
+  //   disabled: string;
+  // }
 }
 
 export default Theme;
