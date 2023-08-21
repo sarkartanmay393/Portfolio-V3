@@ -3,14 +3,20 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 import { useStoreActions } from "~/store/typedHooks";
 
 import VectorLogo from "../assets/logo.svg";
+import { useRouter } from "next/router";
 
 const NavigationBar = () => {
   const theme = useTheme();
+  const router = useRouter();
   const setTheme = useStoreActions((state) => state.setTheme);
 
   const handleThemeToggle = () => {
     setTheme(theme.palette.mode === "light" ? "dark" : "light");
   };
+
+  const handleTabSwitch = (tabAddress: string) => {
+    void router.push(tabAddress);
+  }
 
   return (
     <Box
@@ -27,7 +33,7 @@ const NavigationBar = () => {
         backgroundColor: theme.custom.navigation.bgColor,
 
         position: "fixed",
-        
+
         [theme.breakpoints.down("laptop")]: {
           bottom: "0",
         },
@@ -101,6 +107,7 @@ const NavigationBar = () => {
               },
               backgroundColor: tab.active ? theme.palette.primary.main : "",
             }}
+            onClick={() => { handleTabSwitch(tab.address) }}
           >
             <Typography
               className="tab_typography"
@@ -154,10 +161,10 @@ const NavigationBar = () => {
 
 const TabDetails = [
   { label: "home.", address: "/", active: true },
-  { label: "blog.", address: "/blog", active: false },
-  { label: "project.", address: "/project", active: false },
-  { label: "craft.", address: "/craft", active: false },
-  { label: "contact.", address: "/contact", active: false },
+  { label: "blog.", address: "/blogs", active: false },
+  { label: "project.", address: "/projects", active: false },
+  { label: "craft.", address: "/crafts", active: false },
+  { label: "contact.", address: "/contacts", active: false },
 ];
 
 export default NavigationBar;

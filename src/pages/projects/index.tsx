@@ -1,12 +1,9 @@
 import { Box } from "@mui/material";
-
-import IntroCard from "~/components/home/IntroCard";
-import ProjectCard from "~/components/home/Projects";
 import Layout from "~/layout/layout";
 
-const HomePage = () => {
+const ProjectsPage = () => {
   return (
-    <Layout Title={"Home"}>
+    <Layout Title="Projects">
       <Box
         sx={{
           display: "flex",
@@ -16,11 +13,9 @@ const HomePage = () => {
           scrollSnapType: "y mandatory",
         }}
       >
-        <IntroCard />
-        {/* <ProjectCard /> */}
       </Box>
     </Layout>
   );
 };
 
-export default HomePage;
+export default ProjectsPage;

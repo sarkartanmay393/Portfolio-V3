@@ -5,10 +5,19 @@ import SendSharpIcon from "@mui/icons-material/SendSharp";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
 import VectorLogo from "../../assets/logo.svg";
+import React from "react";
 
 
 const IntroCard = () => {
   const theme = useTheme();
+
+
+  const handleHireMe = () => {
+    window.open(
+      `mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm ${name}, I wanted to contact the you regarding...`,
+      '_blank'
+    );
+  };
 
   return (
     <Box
@@ -141,6 +150,7 @@ const IntroCard = () => {
         }}
       >
         <Button
+          onClick={handleHireMe}
           sx={{
             display: "flex",
             flexDirection: "row",
