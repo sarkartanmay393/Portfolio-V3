@@ -27,9 +27,6 @@ export default function IntroCard() {
         height: "100vh",
         justifyContent: "center",
         scrollSnapAlign: 'start',
-        // [theme.breakpoints.up('laptop')]: {
-        //   marginTop: '4rem'
-        // },
       }}
     >
       <Box
@@ -110,8 +107,7 @@ export default function IntroCard() {
           flexDirection: "row",
         }}
       >
-        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        <Image className="green_dot" src={GreenDot} alt="availability dot" />
+        <Image className="green_dot" src={GreenDot as string} alt="availability dot" />
         <Typography
           sx={{
             fontWeight: "400",
@@ -124,7 +120,6 @@ export default function IntroCard() {
             },
             "::selection": {
               backgroundColor: "rgba(0,0,0,0)",
-              // color: theme.palette.secondary.contrastText,
             },
           }}
         >

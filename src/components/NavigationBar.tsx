@@ -62,10 +62,9 @@ const NavigationBar = () => {
       <Box
         sx={{
           display: "flex",
-          gap: "0",
           padding: "0 1.6rem",
           [theme.breakpoints.only("mobile")]: {
-            padding: "0",
+            padding: 0,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
