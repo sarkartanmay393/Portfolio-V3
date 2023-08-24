@@ -130,7 +130,11 @@ const NavigationBar = () => {
         sx={{
           translate: "-1.2rem 2px",
           [theme.breakpoints.down("laptop")]: {
-            display: "none",
+            translate: "0",
+            paddingRight: '1rem'
+          },
+          [theme.breakpoints.down("tablet")]: {
+            paddingRight: '0.8rem'
           },
         }}
       >

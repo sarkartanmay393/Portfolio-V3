@@ -1,21 +1,19 @@
-import { Box, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
+import { Box, Typography, useTheme } from "@mui/material";
 
-export default function Card() {
+export default function ProjectCard() {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
+        gap: "0.8rem",
         display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         [theme.breakpoints.down("laptop")]: {
           flexDirection: "column",
         },
-        justifyContent: "center",
-
-        alignItems: "center",
-
-        gap: "0.8rem",
       }}
     >
       <Box
@@ -28,7 +26,6 @@ export default function Card() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-
           [theme.breakpoints.up("tablet")]: {
             width: "300px",
           },
@@ -44,15 +41,15 @@ export default function Card() {
         />
         <Typography
           sx={{
+            fontWeight: "600",
+            textTransform: "",
+            color: String(theme.palette.primary),
             [theme.breakpoints.up("mobile")]: {
               fontSize: "2rem",
             },
             [theme.breakpoints.up("tablet")]: {
               fontSize: "2.4rem",
             },
-            fontWeight: "600",
-            textTransform: "",
-            color: String(theme.palette.primary),
           }}
         >
           Simulate WH

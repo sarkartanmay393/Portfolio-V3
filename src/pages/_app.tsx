@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Theme from "../theme/theme";
 import { type AppType } from "next/app";
 import globalStore from "~/store/globalStore";
@@ -33,6 +33,11 @@ const PortfolioApp: AppType = ({ Component, ...pageProps }) => {
 const InsideApp: AppType = ({ Component, ...pageProps }) => {
   const mode = useStoreState((state) => state.theme.mode);
   const theme = React.useMemo(() => createTheme(Theme(mode)), [mode]);
+
+  // useEffect(() => {
+  //   if (window.screen.availWidth <= 640)
+  //     window.document.getElementById('toggle')?.style.setProperty("--size", "1.6rem")
+  // }, [mode])
 
   return (
     <ThemeProvider theme={theme}>

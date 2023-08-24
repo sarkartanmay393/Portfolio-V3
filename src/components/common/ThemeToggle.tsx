@@ -8,6 +8,7 @@ export const ThemeToggle = () => {
   const handleThemeToggle = () => {
     setTheme(theme.palette.mode === "light" ? "dark" : "light");
   }
+
   return (
     <input
       id="toggle"
