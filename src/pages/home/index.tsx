@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 
 import IntroCard from "~/components/home/IntroCard";
-import ProjectCard from "~/components/home/Projects";
 import Layout from "~/layout/layout";
 
 const HomePage = () => {

@@ -1,20 +1,19 @@
 import Image from "next/image";
 import { Typography, Box, Button, useTheme } from "@mui/material";
 
-import SendSharpIcon from "@mui/icons-material/SendSharp";
+import React from "react";
+import VectorLogo from "../../assets/logo.svg";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
-import VectorLogo from "../../assets/logo.svg";
-import React from "react";
+import SendSharpIcon from "@mui/icons-material/SendSharp";
 
 
-const IntroCard = () => {
+export default function IntroCard() {
   const theme = useTheme();
-
 
   const handleHireMe = () => {
     window.open(
-      `mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm ${name}, I wanted to contact the you regarding...`,
+      `mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding...`,
       '_blank'
     );
   };
@@ -39,7 +38,6 @@ const IntroCard = () => {
           display: "flex",
           alignItems: "center",
           gap: "0.8rem",
-
           [theme.breakpoints.up("laptop")]: {
             display: "none",
           },
@@ -48,12 +46,12 @@ const IntroCard = () => {
         <Image src={VectorLogo as string} alt="" />
         <Typography
           sx={{
-            [theme.breakpoints.down("laptop")]: {
-              fontSize: "4rem",
-            },
             fontWeight: "600",
             textTransform: "lowercase",
             color: String(theme.palette.primary),
+            [theme.breakpoints.down("laptop")]: {
+              fontSize: "4rem",
+            },
           }}
         >
           tsx
@@ -61,17 +59,15 @@ const IntroCard = () => {
       </Box>
       <Typography
         sx={{
+          fontWeight: "800",
+          color: theme.palette.text.primary,
+          lineHeight: "100%",
           [theme.breakpoints.up("mobile")]: {
             fontSize: "3.2rem",
           },
           [theme.breakpoints.up("tablet")]: {
             fontSize: "4.8rem",
           },
-
-          fontWeight: "800",
-          color: theme.palette.text.primary,
-          lineHeight: "100%",
-
           "::selection": {
             color:
               theme.palette.mode === "light"
@@ -84,15 +80,15 @@ const IntroCard = () => {
       </Typography>
       <Typography
         sx={{
+          fontWeight: "600",
+          lineHeight: "1.3",
+          color: theme.palette.text.secondary,
           [theme.breakpoints.up("mobile")]: {
             fontSize: "1.6rem",
           },
           [theme.breakpoints.up("tablet")]: {
             fontSize: "2.2rem",
           },
-          fontWeight: "600",
-          lineHeight: "1.3",
-          color: theme.palette.text.secondary,
           "::selection": {
             backgroundColor: theme.palette.secondary.light,
             color: theme.palette.text.primary,
@@ -107,25 +103,25 @@ const IntroCard = () => {
       </Typography>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
           gap: "1rem",
+          display: "flex",
           cursor: "default",
+          alignItems: "center",
+          flexDirection: "row",
         }}
       >
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
         <Image className="green_dot" src={GreenDot} alt="availability dot" />
         <Typography
           sx={{
+            fontWeight: "400",
+            color: theme.palette.text.secondary,
             [theme.breakpoints.up("mobile")]: {
               fontSize: "1.4rem",
             },
             [theme.breakpoints.up("tablet")]: {
               fontSize: "1.5rem",
             },
-            fontWeight: "400",
-            color: theme.palette.text.secondary,
             "::selection": {
               backgroundColor: "rgba(0,0,0,0)",
               // color: theme.palette.secondary.contrastText,
@@ -155,16 +151,13 @@ const IntroCard = () => {
             display: "flex",
             flexDirection: "row",
             gap: "0.8rem",
-
             padding: "0.8rem 1.6rem",
             borderRadius: "2.8rem",
             backgroundColor: theme.palette.secondary.dark,
-
             minWidth: "20%",
             [theme.breakpoints.between("mobile", "tablet")]: {
               minWidth: "100%",
             },
-
             ":hover": {
               backgroundColor: theme.palette.secondary.main,
             },
@@ -172,15 +165,15 @@ const IntroCard = () => {
         >
           <Typography
             sx={{
+              fontWeight: "600",
+              textTransform: "lowercase",
+              color: theme.custom.button.textColor,
               [theme.breakpoints.up("mobile")]: {
                 fontSize: "1.6rem",
               },
               [theme.breakpoints.up("tablet")]: {
                 fontSize: "2rem",
               },
-              fontWeight: "600",
-              textTransform: "lowercase",
-              color: theme.custom.button.textColor,
             }}
           >
             Hire me
@@ -193,16 +186,13 @@ const IntroCard = () => {
             flexDirection: "row",
             alignItems: "center",
             gap: "0.6rem",
-
             padding: "0.8rem 2.6rem",
             borderRadius: "2.8rem",
             backgroundColor: theme.palette.primary.contrastText,
             border: `0.05rem solid ${theme.palette.primary.light}`,
-
             [theme.breakpoints.between("mobile", "tablet")]: {
               "min-width": "100%",
             },
-
             ":hover": {
               backgroundColor: theme.custom.button.onHoverBgColor,
             },
@@ -210,15 +200,15 @@ const IntroCard = () => {
         >
           <Typography
             sx={{
+              fontWeight: "600",
+              textTransform: "lowercase",
+              color: theme.custom.button.textColor,
               [theme.breakpoints.up("mobile")]: {
                 fontSize: "1.6rem",
               },
               [theme.breakpoints.up("tablet")]: {
                 fontSize: "2rem",
               },
-              fontWeight: "600",
-              textTransform: "lowercase",
-              color: theme.custom.button.textColor,
             }}
           >
             leave a message
@@ -234,4 +224,3 @@ const IntroCard = () => {
   );
 };
 
-export default IntroCard;

@@ -32,8 +32,6 @@ const PortfolioApp: AppType = ({ Component, ...pageProps }) => {
 // Insider Component
 const InsideApp: AppType = ({ Component, ...pageProps }) => {
   const mode = useStoreState((state) => state.theme.mode);
-  // const setTheme = useStoreActions((state) => state.setTheme);
-
   const theme = React.useMemo(() => createTheme(Theme(mode)), [mode]);
 
   return (

@@ -1,8 +1,4 @@
-import {
-  type PaletteMode,
-  type ThemeOptions,
-  darkScrollbar,
-} from "@mui/material";
+import { type PaletteMode, type ThemeOptions } from "@mui/material";
 import { common } from "@mui/material/colors";
 
 const Theme = (mode: PaletteMode) => {
