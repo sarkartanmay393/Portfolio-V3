@@ -8,11 +8,11 @@ import { common } from "@mui/material/colors";
 const Theme = (mode: PaletteMode) => {
   return {
     components: {
-      MuiCssBaseline: {
-        styleOverrides: {
-          body: mode === "dark" ? darkScrollbar() : null,
-        },
-      },
+      // MuiCssBaseline: {
+      //   styleOverrides: {
+      //     body: mode === "dark" ? darkScrollbar() : null,
+      //   },
+      // },
     },
     palette: {
       mode,

@@ -1,23 +1,25 @@
-import Image from "next/image";
-import { Box, Button, Typography, useTheme } from "@mui/material";
-import { useStoreActions } from "~/store/typedHooks";
-
-import VectorLogo from "../assets/logo.svg";
+import React from "react";
 import { useRouter } from "next/router";
+import { HeroTitle } from "./common/HeroTitle";
+import { ThemeToggle } from "./common/ThemeToggle";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+
+const TabDetails = [
+  { label: "home.", address: "/" },
+  { label: "blog.", address: "/blogs" },
+  { label: "project.", address: "/projects" },
+  { label: "craft.", address: "/crafts" },
+  { label: "contact.", address: "/contacts" },
+];
 
 const NavigationBar = () => {
   const theme = useTheme();
-  const router = useRouter();
-  const setTheme = useStoreActions((state) => state.setTheme);
-
-  const handleThemeToggle = () => {
-    setTheme(theme.palette.mode === "light" ? "dark" : "light");
-  };
+  const router = useRouter();;
 
   const handleTabSwitch = (tabAddress: string) => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     router.push(tabAddress);
-  }
+  };
 
   return (
     <Box
@@ -29,24 +31,20 @@ const NavigationBar = () => {
         border: `0.1px solid `.concat(theme.palette.divider),
         borderRadius: "2.8rem",
         padding: "0.1rem",
-
         justifyContent: "center",
         backgroundColor: theme.custom.navigation.bgColor,
-
         position: "fixed",
-
+        boxShadow: `0px 0px 12px 0px `
+          .concat(theme.palette.divider)
+          .replace("1)", "0.6)"),
         [theme.breakpoints.down("laptop")]: {
           bottom: "0",
         },
         [theme.breakpoints.up("laptop")]: {
           width: "68%",
           justifyContent: "space-between",
-          top: "0"
+          top: "0",
         },
-
-        boxShadow: `0px 0px 12px 0px `
-          .concat(theme.palette.divider)
-          .replace("1)", "0.6)"),
       }}
     >
       <Box
@@ -54,38 +52,18 @@ const NavigationBar = () => {
           display: "flex",
           alignItems: "center",
           gap: "0.8rem",
-
           [theme.breakpoints.down("laptop")]: {
             display: "none",
           },
         }}
       >
-        <Image src={VectorLogo as string} alt="" />
-        <Typography
-          sx={{
-            [theme.breakpoints.up("mobile")]: {
-              fontSize: "1.6rem",
-            },
-            [theme.breakpoints.up("tablet")]: {
-              fontSize: "2rem",
-            },
-            [theme.breakpoints.up("laptop")]: {
-              fontSize: "2.6rem",
-            },
-            fontWeight: "600",
-            textTransform: "lowercase",
-            color: theme.custom.button.textColor,
-          }}
-        >
-          tsx
-        </Typography>
+        <HeroTitle theme={theme} />
       </Box>
       <Box
         sx={{
           display: "flex",
           gap: "0",
           padding: "0 1.6rem",
-
           [theme.breakpoints.only("mobile")]: {
             padding: "0",
             display: "flex",
@@ -94,51 +72,60 @@ const NavigationBar = () => {
           },
         }}
       >
-        {TabDetails.map((tab) => (
-          <Button
-            key={tab.label}
-            sx={{
-              textTransform: "lowercase",
-              borderRadius: "3rem",
-              ":hover > .tab_typography": {
-                fontWeight: "600",
-              },
-              ":hover": {
-                backgroundColor: theme.custom.button.onHoverBgColor,
-              },
-              backgroundColor: tab.active ? theme.palette.primary.main : "",
-            }}
-            onClick={() => { handleTabSwitch(tab.address) }}
-          >
-            <Typography
-              className="tab_typography"
+        {TabDetails.map((tab) => {
+          const isActive = router.pathname == tab.address;
+          return (
+            <Button
+              key={tab.label}
               sx={{
-                [theme.breakpoints.up("mobile")]: {
-                  fontSize: "1.4rem",
-                },
-                [theme.breakpoints.up("tablet")]: {
-                  fontSize: "1.8rem",
-                  width: "6rem",
-                },
-                [theme.breakpoints.up("laptop")]: {
-                  fontSize: "2rem",
-                  width: "8rem",
-                },
                 textTransform: "lowercase",
-                color: tab.active
-                  ? theme.custom.navigation.activeTextColor
-                  : theme.custom.navigation.textColor,
-                fontWeight: tab.active ? 600 : "500",
-
+                borderRadius: "3rem",
+                backgroundColor:
+                  isActive ? theme.palette.primary.main : "",
+                ":hover > .tab_typography": {
+                  fontWeight: "600",
+                },
                 ":hover": {
-                  color: tab.active ? theme.custom.navigation.textColor : "",
+                  backgroundColor: theme.custom.button.onHoverBgColor,
                 },
               }}
+              onClick={() => {
+                handleTabSwitch(tab.address);
+              }}
             >
-              {tab.label}
-            </Typography>
-          </Button>
-        ))}
+              <Typography
+                className="tab_typography"
+                sx={{
+                  textTransform: "lowercase",
+                  color:
+                    isActive
+                      ? theme.custom.navigation.activeTextColor
+                      : theme.custom.navigation.textColor,
+                  fontWeight: isActive ? 600 : "500",
+                  [theme.breakpoints.up("mobile")]: {
+                    fontSize: "1.4rem",
+                  },
+                  [theme.breakpoints.up("tablet")]: {
+                    fontSize: "1.8rem",
+                    width: "6rem",
+                  },
+                  [theme.breakpoints.up("laptop")]: {
+                    fontSize: "2rem",
+                    width: "8rem",
+                  },
+                  ":hover": {
+                    color:
+                      isActive
+                        ? theme.custom.navigation.textColor
+                        : "",
+                  },
+                }}
+              >
+                {tab.label}
+              </Typography>
+            </Button>
+          );
+        })}
       </Box>
       <Box
         sx={{
@@ -148,24 +135,10 @@ const NavigationBar = () => {
           },
         }}
       >
-        <input
-          id="toggle"
-          aria-label=""
-          className="toggle"
-          type="checkbox"
-          onClick={handleThemeToggle}
-        />
+        <ThemeToggle />
       </Box>
-    </Box>
+    </Box >
   );
 };
-
-const TabDetails = [
-  { label: "home.", address: "/", active: true },
-  { label: "blog.", address: "/blogs", active: false },
-  { label: "project.", address: "/projects", active: false },
-  { label: "craft.", address: "/crafts", active: false },
-  { label: "contact.", address: "/contacts", active: false },
-];
 
 export default NavigationBar;
