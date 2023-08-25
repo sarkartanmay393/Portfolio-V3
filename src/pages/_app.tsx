@@ -1,13 +1,17 @@
 import "~/styles/globals.css";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Theme from "../theme/theme";
-import { type AppType } from "next/app";
 import globalStore from "~/store/globalStore";
 import { useStoreState } from "~/store/typedHooks";
 import { StoreProvider, createStore } from "easy-peasy";
 import { ThemeProvider, createTheme } from "@mui/material";
+import { SessionProvider } from "next-auth/react"
+
+import { type AppType } from "next/app";
+import { type Session } from "next-auth";
 import type GlobalStoreModel from "~/interfaces/globalStoreModel";
+
 
 import "@fontsource/manrope/200.css";
 import "@fontsource/manrope/300.css";
@@ -21,11 +25,13 @@ import "@fontsource/manrope/800.css";
 const store = createStore<GlobalStoreModel>(globalStore);
 
 // Main Component
-const PortfolioApp: AppType = ({ Component, ...pageProps }) => {
+const PortfolioApp: AppType<{ session: Session }> = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
-    <StoreProvider store={store}>
-      <InsideApp Component={Component} {...pageProps} />
-    </StoreProvider>
+    <SessionProvider session={session}>
+      <StoreProvider store={store}>
+        <InsideApp pageProps={pageProps} router={undefined} Component={Component} />
+      </StoreProvider>
+    </SessionProvider>
   );
 };
 
@@ -33,11 +39,6 @@ const PortfolioApp: AppType = ({ Component, ...pageProps }) => {
 const InsideApp: AppType = ({ Component, ...pageProps }) => {
   const mode = useStoreState((state) => state.theme.mode);
   const theme = React.useMemo(() => createTheme(Theme(mode)), [mode]);
-
-  // useEffect(() => {
-  //   if (window.screen.availWidth <= 640)
-  //     window.document.getElementById('toggle')?.style.setProperty("--size", "1.6rem")
-  // }, [mode])
 
   return (
     <ThemeProvider theme={theme}>
