@@ -2,6 +2,10 @@
   box-sizing: content-box;
 }
 
+a {
+  text-decoration: 0;
+}
+
 html,
 body {
   padding: 0;

@@ -1,6 +1,6 @@
 import { Typography, Box, useTheme } from "@mui/material";
 
-import Card from "../ProjectCard";
+import Card from "../common/ProjectCard";
 
 const ProjectCard = () => {
   const theme = useTheme();

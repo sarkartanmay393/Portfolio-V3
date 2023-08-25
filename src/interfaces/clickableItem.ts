@@ -1,4 +1,4 @@
-export default interface BlogCardProps {
+export default interface ClickableItemProps {
   title: string;
   description: string;
   url: string;

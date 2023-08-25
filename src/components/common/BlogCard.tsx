@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CardContent, Box, Typography, useTheme, Card } from "@mui/material";
-import type BlogCardProps from "~/interfaces/BlogCardProps";
+import type BlogCardProps from "~/interfaces/clickableItem";
 
 export default function BlogCard({ props }: { props: BlogCardProps }) {
   const theme = useTheme();

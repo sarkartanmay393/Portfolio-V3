@@ -86,6 +86,16 @@ const Theme = (mode: PaletteMode) => {
               activeTextColor: common.black,
             }),
       },
+      clickableItem: {
+        ...(mode === "light"
+          ? {
+              backgroundColor: "rgba(80, 80, 80, 0.1)",
+            }
+          : {
+              backgroundColor: "rgba(80, 80, 80, 0.5)",
+            }),
+        borderRadius: "4px",
+      },
     },
   } as ThemeOptions;
 };
@@ -102,6 +112,9 @@ declare module "@mui/material/styles" {
         textColor: string;
         activeTextColor: string;
       };
+      clickableItem: {
+        backgroundColor: string;
+      };
     };
   }
 
@@ -115,6 +128,9 @@ declare module "@mui/material/styles" {
         bgColor?: string;
         textColor?: string;
         activeTextColor?: string;
+      };
+      clickableItem?: {
+        backgroundColor?: string;
       };
     };
   }

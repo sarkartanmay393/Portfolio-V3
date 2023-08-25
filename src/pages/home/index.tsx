@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Layout from "~/layout/layout";
 import BlogCard from "~/components/common/BlogCard";
-import type BlogCardProps from "~/interfaces/BlogCardProps";
+import type BlogCardProps from "~/interfaces/clickableItem";
 import IntroCard from "~/components/home/IntroCard";
 import { useTheme } from "@mui/material";
 

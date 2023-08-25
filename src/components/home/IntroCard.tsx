@@ -6,6 +6,7 @@ import VectorLogo from "../../assets/logo.svg";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
+import Link from "next/link";
 
 
 export default function IntroCard() {
@@ -175,45 +176,47 @@ export default function IntroCard() {
           </Typography>
           <SendSharpIcon sx={{ fontSize: "1.8rem", translate: "0 1.5px" }} />
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "0.6rem",
-            padding: "0.8rem 2.6rem",
-            borderRadius: "2.8rem",
-            backgroundColor: theme.palette.primary.contrastText,
-            border: `0.05rem solid ${theme.palette.primary.light}`,
-            [theme.breakpoints.between("mobile", "tablet")]: {
-              "min-width": "100%",
-            },
-            ":hover": {
-              backgroundColor: theme.custom.button.onHoverBgColor,
-            },
-          }}
-        >
-          <Typography
+        <Link href="/crafts/guestbook">
+          <Button
             sx={{
-              fontWeight: "600",
-              textTransform: "lowercase",
-              color: theme.custom.button.textColor,
-              [theme.breakpoints.up("mobile")]: {
-                fontSize: "1.6rem",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "0.6rem",
+              padding: "0.8rem 2.6rem",
+              borderRadius: "2.8rem",
+              backgroundColor: theme.palette.primary.contrastText,
+              border: `0.05rem solid ${theme.palette.primary.light}`,
+              [theme.breakpoints.between("mobile", "tablet")]: {
+                "min-width": "100%",
               },
-              [theme.breakpoints.up("tablet")]: {
-                fontSize: "2rem",
+              ":hover": {
+                backgroundColor: theme.custom.button.onHoverBgColor,
               },
             }}
           >
-            leave a message
-          </Typography>
-          <Image
-            width={20}
-            src={MessageCross as string}
-            alt="leave a message using github"
-          />
-        </Button>
+            <Typography
+              sx={{
+                fontWeight: "600",
+                textTransform: "lowercase",
+                color: theme.custom.button.textColor,
+                [theme.breakpoints.up("mobile")]: {
+                  fontSize: "1.6rem",
+                },
+                [theme.breakpoints.up("tablet")]: {
+                  fontSize: "2rem",
+                },
+              }}
+            >
+              leave a message
+            </Typography>
+            <Image
+              width={20}
+              src={MessageCross as string}
+              alt="leave a message using github"
+            />
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

@@ -1,21 +1,31 @@
-import { Box } from "@mui/material";
 import Layout from "~/layout/layout";
+import { Box, List } from "@mui/material";
+import CraftItem from "~/components/craft/CraftItem";
 
-const CraftsPage = () => {
+export default function CraftsPage() {
+
     return (
         <Layout Title="Crafts">
             <Box
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "6rem",
-                    overflowY: "auto",
-                    scrollSnapType: "y mandatory",
                 }}
             >
+
+                <List >
+                    {CraftDetails.map((craft) => (
+                        <CraftItem key={craft.title} {...craft} />
+                    ))}
+                </List>
             </Box>
         </Layout>
     );
 };
 
-export default CraftsPage;
+const CraftDetails = [{
+    title: "Guestbook",
+    description: "Sign in with Github and leave any message for the community",
+    url: "/crafts/guestbook",
+    emoji: "📇",
+}];
