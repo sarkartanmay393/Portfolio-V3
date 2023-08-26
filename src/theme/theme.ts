@@ -53,6 +53,7 @@ const Theme = (mode: PaletteMode) => {
     breakpoints: {
       values: {
         mobile: 0,
+        mobileEnd: 456,
         tablet: 640,
         laptop: 1024,
         desktop: 1200,
@@ -90,9 +91,11 @@ const Theme = (mode: PaletteMode) => {
         ...(mode === "light"
           ? {
               backgroundColor: "rgba(80, 80, 80, 0.1)",
+              backgroundColorlight: "rgba(80, 80, 80, 0.1)",
             }
           : {
               backgroundColor: "rgba(80, 80, 80, 0.5)",
+              backgroundColorlight: "rgba(80, 80, 80, 0.2)",
             }),
         borderRadius: "4px",
       },
@@ -114,6 +117,7 @@ declare module "@mui/material/styles" {
       };
       clickableItem: {
         backgroundColor: string;
+        backgroundColorlight: string;
       };
     };
   }
@@ -131,6 +135,7 @@ declare module "@mui/material/styles" {
       };
       clickableItem?: {
         backgroundColor?: string;
+        backgroundColorlight?: string;
       };
     };
   }
@@ -144,6 +149,7 @@ declare module "@mui/material/styles" {
     tablet: true;
     laptop: true;
     desktop: true;
+    mobileEnd: true;
   }
   // interface TypeText {
   //   primary: string;
