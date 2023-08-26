@@ -5,7 +5,7 @@ const BlogsPage = () => {
     const theme = useTheme();
 
     return (
-        <Layout Title="Projects">
+        <Layout Title="Blogs">
             <Box
                 sx={{
                     display: "flex",

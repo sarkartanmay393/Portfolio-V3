@@ -2,6 +2,7 @@ import Head from "next/head";
 import type CAppType from "~/interfaces/customAppType";
 import { Box, useTheme, CssBaseline } from "@mui/material";
 import NavigationBar from "~/components/NavigationBar";
+import Footer from "~/components/Footer";
 
 const Layout = ({ Title, children }: CAppType) => {
   const theme = useTheme();
@@ -46,6 +47,7 @@ const Layout = ({ Title, children }: CAppType) => {
         >
           {children}
         </Box>
+        
       </Box>
     </>
   );

@@ -6,28 +6,20 @@ import VectorLogo from "../../assets/logo.svg";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
-import Link from "next/link";
 
 
-export default function IntroCard() {
+export default function IntroArea() {
   const theme = useTheme();
-
-  const handleHireMe = () => {
-    window.open(
-      `mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding...`,
-      '_blank'
-    );
-  };
 
   return (
     <Box
       sx={{
+        gap: "1.6rem",
         display: "flex",
         flexDirection: "column",
-        gap: "1.6rem",
-        height: "100vh",
         justifyContent: "center",
-        scrollSnapAlign: 'start',
+
+        // scrollSnapAlign: 'start',
       }}
     >
       <Box
@@ -142,7 +134,7 @@ export default function IntroCard() {
         }}
       >
         <Button
-          onClick={handleHireMe}
+          href="mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding..."
           sx={{
             display: "flex",
             flexDirection: "row",
@@ -176,47 +168,46 @@ export default function IntroCard() {
           </Typography>
           <SendSharpIcon sx={{ fontSize: "1.8rem", translate: "0 1.5px" }} />
         </Button>
-        <Link href="/crafts/guestbook">
-          <Button
+        <Button
+          href="/crafts/guestbook"
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "0.6rem",
+            padding: "0.8rem 2.6rem",
+            borderRadius: "2.8rem",
+            backgroundColor: theme.palette.primary.contrastText,
+            border: `0.05rem solid ${theme.palette.primary.light}`,
+            [theme.breakpoints.between("mobile", "tablet")]: {
+              "min-width": "100%",
+            },
+            ":hover": {
+              backgroundColor: theme.custom.button.onHoverBgColor,
+            },
+          }}
+        >
+          <Typography
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "0.6rem",
-              padding: "0.8rem 2.6rem",
-              borderRadius: "2.8rem",
-              backgroundColor: theme.palette.primary.contrastText,
-              border: `0.05rem solid ${theme.palette.primary.light}`,
-              [theme.breakpoints.between("mobile", "tablet")]: {
-                "min-width": "100%",
+              fontWeight: "600",
+              textTransform: "lowercase",
+              color: theme.custom.button.textColor,
+              [theme.breakpoints.up("mobile")]: {
+                fontSize: "1.6rem",
               },
-              ":hover": {
-                backgroundColor: theme.custom.button.onHoverBgColor,
+              [theme.breakpoints.up("tablet")]: {
+                fontSize: "2rem",
               },
             }}
           >
-            <Typography
-              sx={{
-                fontWeight: "600",
-                textTransform: "lowercase",
-                color: theme.custom.button.textColor,
-                [theme.breakpoints.up("mobile")]: {
-                  fontSize: "1.6rem",
-                },
-                [theme.breakpoints.up("tablet")]: {
-                  fontSize: "2rem",
-                },
-              }}
-            >
-              leave a message
-            </Typography>
-            <Image
-              width={20}
-              src={MessageCross as string}
-              alt="leave a message using github"
-            />
-          </Button>
-        </Link>
+            leave a message
+          </Typography>
+          <Image
+            width={20}
+            src={MessageCross as string}
+            alt="leave a message using github"
+          />
+        </Button>
       </Box>
     </Box>
   );

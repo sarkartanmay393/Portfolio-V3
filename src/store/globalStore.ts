@@ -4,8 +4,8 @@ import type GlobalStoreModel from "~/interfaces/globalStoreModel";
 import { action } from "easy-peasy";
 
 const globalStore: GlobalStoreModel = {
-  theme: { mode: "light" },
-  
+  theme: { mode: "dark" },
+
   setTheme: action((state, payload: PaletteMode) => {
     state.theme.mode = payload;
   }),
