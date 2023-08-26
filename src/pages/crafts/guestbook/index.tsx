@@ -70,6 +70,7 @@ export default function GuestbookPage() {
         <Grid sx={{}}>
           <GuestMessageList theme={theme} guestMessageList={guestMessageList} />
         </Grid>
+
       </Box>
     </Layout >
   );

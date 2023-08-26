@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material";
 import ProjectCard from "~/components/common/ProjectCard";
 import type ClickableItemProps from "~/interfaces/clickableItem";
 import Masonry from '@mui/lab/Masonry';
+import IntroCard from "~/components/home/IntroCard";
 
 const HomePage = () => {
   const theme = useTheme();
@@ -20,6 +21,9 @@ const HomePage = () => {
           scrollSnapType: "y mandatory",
         }}
       >
+
+        <IntroCard />
+
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1rem' }}>
           <Typography mb="2rem" sx={{
             fontWeight: "600",
@@ -33,10 +37,10 @@ const HomePage = () => {
             "::selection": {
               backgroundColor: "rgba(0,0,0,0)",
             },
-          }}>⛑️ PROJECTS</Typography>
+          }}>🤖 PROJECTS</Typography>
           <Masonry columns={{ mobile: 1, mobileEnd: 2, laptop: 3 }} spacing={1}>
-            {ProjectDetails.map((bd, i) => (
-              <ProjectCard key={i} props={bd} />
+            {ProjectDetails.map((pd, i) => (
+              <ProjectCard key={i} props={pd} />
             ))}
           </Masonry>
         </Box>

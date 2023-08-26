@@ -1,7 +1,5 @@
 import { Typography, Box, useTheme } from "@mui/material";
 
-import Card from "../common/ProjectCard";
-
 const ProjectCard = () => {
   const theme = useTheme();
 
@@ -51,9 +49,7 @@ const ProjectCard = () => {
           },
         }}
       >
-        <Card />
-        <Card />
-        <Card />
+        
       </Box>
     </Box>
   );
