@@ -2,7 +2,13 @@ import React from "react";
 import { useRouter } from "next/router";
 import { HeroTitle } from "./common/HeroTitle";
 import { ThemeToggle } from "./common/ThemeToggle";
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  duration,
+  useTheme,
+} from "@mui/material";
 
 const TabDetails = [
   { label: "home.", address: "/" },
@@ -12,9 +18,13 @@ const TabDetails = [
   { label: "contact.", address: "/contacts" },
 ];
 
-const NavigationBar = () => {
+interface NavBarProps {
+  hidePulse: boolean;
+}
+
+const NavigationBar = ({ hidePulse }: NavBarProps) => {
   const theme = useTheme();
-  const router = useRouter();;
+  const router = useRouter();
 
   const handleTabSwitch = (tabAddress: string) => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -25,9 +35,9 @@ const NavigationBar = () => {
     <Box
       sx={{
         zIndex: "1",
-        marginY: "5rem",
-        display: "flex",
+        marginY: "2.5rem",
         alignItems: "center",
+        display: "flex",
         border: `0.1px solid `.concat(theme.palette.divider),
         borderRadius: "2.8rem",
         padding: "0.1rem",
@@ -39,12 +49,18 @@ const NavigationBar = () => {
           .replace("1)", "0.6)"),
         [theme.breakpoints.down("laptop")]: {
           bottom: "0",
+          display: hidePulse ? "none" : "flex",
         },
         [theme.breakpoints.up("laptop")]: {
           width: "68%",
           justifyContent: "space-between",
           top: "0",
         },
+        transition: theme.transitions.create('display', {
+          duration: 1000,
+          easing: 'easeIn',
+          delay: 1000,
+        }),
       }}
     >
       <Box
@@ -79,8 +95,7 @@ const NavigationBar = () => {
               sx={{
                 textTransform: "lowercase",
                 borderRadius: "3rem",
-                backgroundColor:
-                  isActive ? theme.palette.primary.main : "",
+                backgroundColor: isActive ? theme.palette.primary.main : "",
                 ":hover > .tab_typography": {
                   fontWeight: "600",
                 },
@@ -96,10 +111,9 @@ const NavigationBar = () => {
                 className="tab_typography"
                 sx={{
                   textTransform: "lowercase",
-                  color:
-                    isActive
-                      ? theme.custom.navigation.activeTextColor
-                      : theme.custom.navigation.textColor,
+                  color: isActive
+                    ? theme.custom.navigation.activeTextColor
+                    : theme.custom.navigation.textColor,
                   fontWeight: isActive ? 600 : "500",
                   [theme.breakpoints.up("mobile")]: {
                     fontSize: "1.4rem",
@@ -113,10 +127,7 @@ const NavigationBar = () => {
                     width: "8rem",
                   },
                   ":hover": {
-                    color:
-                      isActive
-                        ? theme.custom.navigation.textColor
-                        : "",
+                    color: isActive ? theme.custom.navigation.textColor : "",
                   },
                 }}
               >
@@ -128,19 +139,21 @@ const NavigationBar = () => {
       </Box>
       <Box
         sx={{
-          translate: "-1.2rem 2px",
-          [theme.breakpoints.down("laptop")]: {
-            translate: "0",
-            paddingRight: '1rem'
+          translate: "-1.2rem 0",
+          [theme.breakpoints.up("mobile")]: {
+            position: "fixed",
+            top: 22,
+            right: 12,
           },
-          [theme.breakpoints.down("tablet")]: {
-            paddingRight: '0.8rem'
+
+          [theme.breakpoints.up("laptop")]: {
+            position: "static",
           },
         }}
       >
         <ThemeToggle />
       </Box>
-    </Box >
+    </Box>
   );
 };
 

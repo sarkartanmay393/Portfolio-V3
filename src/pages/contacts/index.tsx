@@ -1,5 +1,5 @@
-import { Box, Typography, useTheme } from "@mui/material";
 import Layout from "~/layout/layout";
+import { Box, Typography, useTheme } from "@mui/material";
 
 const ContactsPage = () => {
     const theme = useTheme();
@@ -8,9 +8,19 @@ const ContactsPage = () => {
         <Layout Title="Contacts">
             <Box
                 sx={{
+                    gap: "1rem",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "1rem",
+
+                    [theme.breakpoints.up('mobile')]: {
+                        height: '90vh',
+                    },
+                    [theme.breakpoints.up('laptop')]: {
+                        height: '50vh',
+                    },
+
+                    justifyContent: 'center',
+                    alignItems: 'center'
                 }}
             >
                 <Typography
@@ -25,9 +35,27 @@ const ContactsPage = () => {
                         textTransform: "",
                         color: String(theme.palette.primary),
                     }}
+
                 >
-                    📇 About myself
+                    Under Constructions
                 </Typography>
+                <Typography
+                    sx={{
+                        [theme.breakpoints.up("mobile")]: {
+                            fontSize: "3rem",
+                        },
+                        [theme.breakpoints.up("tablet")]: {
+                            fontSize: "4rem",
+                        },
+                        fontWeight: "600",
+                        textTransform: "",
+                        color: String(theme.palette.primary),
+                    }}
+
+                >
+                    🚧
+                </Typography>
+
 
             </Box>
         </Layout >

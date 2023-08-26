@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useStoreActions } from "~/store/typedHooks";
 
 export const ThemeToggle = () => {
@@ -10,12 +10,24 @@ export const ThemeToggle = () => {
   }
 
   return (
-    <input
-      id="toggle"
-      aria-label=""
-      className="toggle"
-      type="checkbox"
-      onClick={handleThemeToggle}
-    />
+    <Box sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      [theme.breakpoints.down('laptop')]: {
+        backgroundColor: theme.palette.mode == 'light' ? theme.palette.secondary.light : 'transparent',
+        padding: "0.4rem",
+        borderRadius: '50%',
+      },
+    }}>
+      <input
+        id="toggle"
+        aria-label=""
+        className="toggle"
+        type="checkbox"
+        onClick={handleThemeToggle}
+      />
+      </Box>
   );
 };

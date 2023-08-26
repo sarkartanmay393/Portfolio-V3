@@ -13,7 +13,7 @@ export default function BlogCard({ props }: { props: BlogCardProps }) {
           boxShadow: 0,
           cursor: 'pointer',
           border: '0.1px solid black',
-          backgroundColor: "transparent",
+          backgroundColor: theme.custom.clickableItem.backgroundColorlight,
           transition: theme.transitions.create('background-color'),
           "&:hover": {
             backgroundColor: theme.palette.secondary.light,

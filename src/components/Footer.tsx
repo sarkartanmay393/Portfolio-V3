@@ -14,6 +14,8 @@ export default function Footer() {
       marginBottom: '3rem',
       padding: "2rem",
 
+      gap: '0.4rem',
+
       backgroundColor: theme.custom.clickableItem.backgroundColorlight
 
     }}>

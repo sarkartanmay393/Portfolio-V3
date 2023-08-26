@@ -11,10 +11,10 @@ export default function ProjectCard({ props }: { props: ClickableItemProps }) {
         boxShadow: 0,
         cursor: 'pointer',
         border: '0.1px solid black',
-        backgroundColor: "transparent",
+        backgroundColor: theme.custom.clickableItem.backgroundColorlight,
         transition: theme.transitions.create('background-color'),
         ':hover': {
-          backgroundColor: theme.custom.clickableItem.backgroundColorlight
+          backgroundColor: theme.custom.clickableItem.backgroundColor
         },
       }}>
       <CardContent>

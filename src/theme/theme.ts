@@ -90,7 +90,7 @@ const Theme = (mode: PaletteMode) => {
       clickableItem: {
         ...(mode === "light"
           ? {
-              backgroundColor: "rgba(80, 80, 80, 0.1)",
+              backgroundColor: "rgba(80, 80, 80, 0.03)",
               backgroundColorlight: "rgba(80, 80, 80, 0.1)",
             }
           : {

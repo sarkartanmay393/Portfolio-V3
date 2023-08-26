@@ -15,7 +15,6 @@ const HomePage = () => {
           gap: "6rem",
           display: "flex",
           flexDirection: "column",
-          paddingTop: "160px",
 
           // overflowY: "auto",
           // scrollSnapType: "y mandatory",
