@@ -1,6 +1,6 @@
 import Head from "next/head";
 import type CAppType from "~/interfaces/customAppType";
-import { Box, useTheme, CssBaseline, Slide } from "@mui/material";
+import { Box, useTheme, CssBaseline } from "@mui/material";
 import NavigationBar from "~/components/NavigationBar";
 import { useEffect, useState } from "react";
 
@@ -13,7 +13,6 @@ const Layout = ({ Title, children, props }: CAppType) => {
     // and hide nav pulse
     let prevScrollPosition = 0;
     window.onscroll = () => {
-      console.log(window.screen.width)
       if (window.scrollY > prevScrollPosition) {
         setHidePulse(true)
       } else {

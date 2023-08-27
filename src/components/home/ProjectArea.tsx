@@ -29,7 +29,7 @@ export default function ProjectArea() {
       }}>🤖 PROJECTS</Typography>
       <Masonry columns={{ mobile: 1, mobileEnd: 2, laptop: 3 }} spacing={1}>
         {data.ProjectDetails.map((pd, i) => (
-          <ProjectCard key={i} props={pd} />
+          <ProjectCard key={i} props={{ ...pd, timeOut: i * 300 }} />
         ))}
       </Masonry>
     </Box>

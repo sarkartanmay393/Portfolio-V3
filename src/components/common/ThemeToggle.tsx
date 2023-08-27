@@ -1,12 +1,19 @@
 import { Box, useTheme } from "@mui/material";
+import { type Dispatch, type SetStateAction } from "react";
 import { useStoreActions } from "~/store/typedHooks";
 
-export const ThemeToggle = () => {
+interface ThemeToggleProps {
+  isDarkMode: boolean;
+  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+}
+
+export const ThemeToggle = ({ isDarkMode, setIsDarkMode }: ThemeToggleProps) => {
   const theme = useTheme();
   const setTheme = useStoreActions((state) => state.setTheme);
 
   const handleThemeToggle = () => {
     setTheme(theme.palette.mode === "light" ? "dark" : "light");
+    setIsDarkMode(!isDarkMode);
   }
 
   return (
@@ -16,9 +23,9 @@ export const ThemeToggle = () => {
       alignItems: 'center',
 
       [theme.breakpoints.down('laptop')]: {
-        backgroundColor: theme.palette.mode == 'light' ? theme.palette.secondary.light : 'transparent',
-        padding: "0.4rem",
-        borderRadius: '50%',
+        // backgroundColor: theme.palette.mode == 'light' ? theme.palette.secondary.light : 'transparent',
+        // padding: "1px",
+        // borderRadius: '50%',
       },
     }}>
       <input
@@ -27,7 +34,8 @@ export const ThemeToggle = () => {
         className="toggle"
         type="checkbox"
         onClick={handleThemeToggle}
+        checked={isDarkMode}
       />
-      </Box>
+    </Box>
   );
 };

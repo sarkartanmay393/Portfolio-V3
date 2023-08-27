@@ -53,10 +53,10 @@ const Theme = (mode: PaletteMode) => {
     breakpoints: {
       values: {
         mobile: 0,
-        mobileEnd: 456,
         tablet: 640,
         laptop: 1024,
         desktop: 1200,
+        mobileEnd: 456,
       },
     },
     typography: {
@@ -67,7 +67,7 @@ const Theme = (mode: PaletteMode) => {
         ...(mode === "light"
           ? {
               textColor: common.white,
-              onHoverBgColor: "rgba(0, 0, 0, 0.5)",
+              onHoverBgColor: "rgba(0, 0, 0, 0.6)",
             }
           : {
               textColor: common.white,
@@ -80,24 +80,29 @@ const Theme = (mode: PaletteMode) => {
               bgColor: "rgba(60, 60, 60, 0.9)",
               textColor: common.white,
               activeTextColor: common.black,
+              onHoverBgColor: "rgba(255, 255, 255, 0.1)",
             }
           : {
               bgColor: "rgba(80, 80, 80, 0.9)",
               textColor: common.white,
               activeTextColor: common.black,
+              onHoverBgColor: "rgba(0, 0, 0, 0.2)",
             }),
       },
       clickableItem: {
         ...(mode === "light"
           ? {
-              backgroundColor: "rgba(80, 80, 80, 0.03)",
-              backgroundColorlight: "rgba(80, 80, 80, 0.1)",
+              backgroundColor: "rgba(80, 80, 80, 0.1)",
+              backgroundColorlight: "rgba(80, 80, 80, 0.05)",
+              onHoverBackgroundColor: "rgba(80, 80, 80, 0.15)",
             }
           : {
               backgroundColor: "rgba(80, 80, 80, 0.5)",
               backgroundColorlight: "rgba(80, 80, 80, 0.2)",
+              onHoverBackgroundColor: "rgba(80, 80, 80, 0.6)",
             }),
-        borderRadius: "4px",
+
+        borderRadius: "8px",
       },
     },
   } as ThemeOptions;
@@ -114,10 +119,13 @@ declare module "@mui/material/styles" {
         bgColor: string;
         textColor: string;
         activeTextColor: string;
+        onHoverBgColor: string;
       };
       clickableItem: {
         backgroundColor: string;
+        onHoverBackgroundColor: string;
         backgroundColorlight: string;
+        borderRadius: string;
       };
     };
   }
@@ -132,10 +140,13 @@ declare module "@mui/material/styles" {
         bgColor?: string;
         textColor?: string;
         activeTextColor?: string;
+        onHoverBgColor?: string;
       };
       clickableItem?: {
         backgroundColor?: string;
+        onHoverBackgroundColor?: string;
         backgroundColorlight?: string;
+        borderRadius?: string;
       };
     };
   }

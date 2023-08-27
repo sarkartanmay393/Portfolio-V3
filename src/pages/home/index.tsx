@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Slide } from "@mui/material";
 import Layout from "~/layout/layout";
 
 import ProjectArea from "~/components/home/ProjectArea";

@@ -16,15 +16,15 @@ export default function Footer() {
 
       gap: '0.4rem',
 
-      backgroundColor: theme.custom.clickableItem.backgroundColorlight
-
+      backgroundColor: theme.custom.clickableItem.backgroundColorlight,
+      borderRadius: theme.typography.pxToRem(8)
     }}>
 
       <Typography sx={{
         fontWeight: "500",
         color: theme.palette.text.primary,
         [theme.breakpoints.up("mobile")]: {
-          fontSize: "1rem",
+          fontSize: "0.9rem",
         },
         [theme.breakpoints.up("tablet")]: {
           fontSize: "1.4rem",

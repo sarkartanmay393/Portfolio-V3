@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Grow, Typography, useTheme } from "@mui/material";
 import BlogCard from "../common/BlogCard";
 
 import data from 'public/data.json';
@@ -7,6 +7,7 @@ export default function BlogArea() {
   const theme = useTheme();
 
   return (
+
     <Box sx={{
       gap: '1rem',
       display: 'flex',
@@ -28,7 +29,7 @@ export default function BlogArea() {
         },
       }}>📝 BLOGS</Typography>
       {data.BlogDetails.map((bd, i) => (
-        <BlogCard key={i} props={bd} />
+        <BlogCard key={i} props={{ ...bd, timeOut: i * 300 }} />
       ))}
     </Box>
   );

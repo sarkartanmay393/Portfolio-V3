@@ -29,7 +29,7 @@ export default function GuestbookPage() {
   }
 
   return (
-    <Layout Title="Crafts">
+    <Layout Title="guestbook">
       <Box
         sx={{
           display: "flex",

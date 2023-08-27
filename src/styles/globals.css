@@ -54,7 +54,7 @@ body {
   height: var(--size);
   box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
   border-radius: 999px;
-  color: hwb(0 91% 9%);
+  color: hwb(0 92% 7%);
 
   transition: all 500ms;
 
@@ -75,6 +75,12 @@ body {
       var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
       calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
       var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .toggle {
+    color: hwb(129 0% 92%);
   }
 }
 

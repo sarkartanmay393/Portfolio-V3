@@ -28,8 +28,8 @@ export default function CraftsArea() {
       }}>👨🏾‍💻 Some of my crafts</Typography>
 
       <List >
-        {CraftDetails.map((craft) => (
-          <CraftItem key={craft.title} {...craft} />
+        {CraftDetails.map((craft, i) => (
+          <CraftItem key={craft.title} craft={{ ...craft, timeOut: i * 300 }} />
         ))}
       </List>
 
