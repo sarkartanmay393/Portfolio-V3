@@ -9,7 +9,7 @@ import { SignInButton } from "~/components/common/AuthButtons";
 import type clientPromises from 'mongodb/mongodb'
 import GuestMessageList from "~/components/craft/guestbook/GuestMessageList";
 
-const apiEndPoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api' : 'https://tanmaysarkar.vercel.app/api';
+// const apiEndPoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api' : 'https://tanmaysarkar.vercel.app/api';
 
 interface GuestbookMessageType {
   _id: clientPromises.BSON.ObjectId;
@@ -43,7 +43,10 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
     }
 
     const updateGuestbookMessages = async () => {
-      const res = await fetch(apiEndPoint + '/guestbook', {
+      const baseUrl = "https://tanmaysarkar.vercel.app";
+      const api_endpoint = '/api/guestbook'
+
+      const res = await fetch(baseUrl + api_endpoint, {
         method: "POST",
         body: JSON.stringify(currentGuestMessage),
         headers: { "Content-Type": 'application/json' }
@@ -130,7 +133,7 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
 
 
 export async function getServerSideProps() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASEURL;
+  const baseUrl = "https://tanmaysarkar.vercel.app";
   const api_endpoint = '/api/guestbook'
 
   const res = await fetch(baseUrl + api_endpoint, { method: "GET" });
