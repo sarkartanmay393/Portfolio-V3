@@ -9,7 +9,7 @@ import { SignInButton } from "~/components/common/AuthButtons";
 import type clientPromises from 'mongodb/mongodb'
 import GuestMessageList from "~/components/craft/guestbook/GuestMessageList";
 
-const APIENDPOINT = process.env.API_ENDPOINT;
+const APIENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 interface GuestbookMessageType {
   _id: clientPromises.BSON.ObjectId;
@@ -44,7 +44,7 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
     }
 
     const updateGuestbookMessages = async () => {
-      const res = await fetch("http://localhost:3000/api" + '/guestbook', {
+      const res = await fetch(APIENDPOINT + '/guestbook', {
         method: "POST",
         body: JSON.stringify(currentGuestMessage),
         headers: { "Content-Type": 'application/json' }

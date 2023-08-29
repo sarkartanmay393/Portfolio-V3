@@ -7,10 +7,7 @@ declare namespace NodeJS {
 
     readonly JWT_SECRET: string;
 
-    readonly JSON_BIN_MASTER_KEY: string;
-    readonly GUESTBOOK_ACCESS_KEY: string;
-
     readonly MONGODB_URL: string;
-    readonly API_ENDPOINT: string;
+    readonly NEXT_PUBLIC_API_ENDPOINT: string;
   }
 }
