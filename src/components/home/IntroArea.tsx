@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Typography, Box, Button, useTheme, Slide, Fade } from "@mui/material";
+import { Typography, Box, Button, useTheme, Fade } from "@mui/material";
 
 import React from "react";
 import VectorLogo from "../../assets/logo.svg";

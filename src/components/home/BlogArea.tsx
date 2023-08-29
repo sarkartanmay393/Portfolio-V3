@@ -1,4 +1,4 @@
-import { Box, Grow, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import BlogCard from "../common/BlogCard";
 
 import data from 'public/data.json';

@@ -8,7 +8,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-// import { useStoreActions } from "~/store/typedHooks";
 
 const TabDetails = [
   { label: "home.", address: "/" },
@@ -28,15 +27,9 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   const handleTabSwitch = (tabAddress: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    router.push(tabAddress);
+     void router.push(tabAddress);
   };
 
-  // const setTheme = useStoreActions((state) => state.setTheme);
-  // const handleThemeToggle = () => {
-  //   setTheme(theme.palette.mode === "light" ? "dark" : "light");
-  //   setIsDarkMode(!isDarkMode);
-  // }
 
   return (
     <Box
@@ -94,7 +87,7 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
             easing: 'cubic-bezier(0, 0, 0.2, 1)',
           }),
         }}
-        // onClick={handleThemeToggle}
+      // onClick={handleThemeToggle}
       >
         <HeroTitle theme={theme} />
       </Box>

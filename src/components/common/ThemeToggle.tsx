@@ -35,6 +35,7 @@ export const ThemeToggle = ({ isDarkMode, setIsDarkMode }: ThemeToggleProps) => 
         type="checkbox"
         onClick={handleThemeToggle}
         checked={isDarkMode}
+        onChange={() => { return }}
       />
     </Box>
   );

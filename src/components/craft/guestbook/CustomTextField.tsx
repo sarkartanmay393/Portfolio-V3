@@ -1,25 +1,26 @@
 import SendIcon from '@mui/icons-material/Send';
 import { type Dispatch, type SetStateAction } from "react";
-import { TextField, Button, Typography, type Theme } from "@mui/material";
+import { TextField, Button, Typography, type Theme, Box } from "@mui/material";
 
 interface CustomTextFieldProps {
   theme: Theme,
-  leavingMessage: string,
-  setLeavingMessage: Dispatch<SetStateAction<string>>,
+  guestMessage: string,
+  setGuestMessage: Dispatch<SetStateAction<string>>,
   handleSendButton: () => void,
 }
 
-export default function CustomTextField({ theme, leavingMessage, setLeavingMessage, handleSendButton }: CustomTextFieldProps) {
+export default function CustomTextField({ theme, guestMessage, setGuestMessage, handleSendButton }: CustomTextFieldProps) {
+
   return (
-    <>
+    <Box sx={{ width: '100%', display: 'flex', gap: "1rem", }}>
       <TextField
         id="guestbook-text-field"
         color="secondary"
         variant="outlined"
         label="Leave a message"
-        value={leavingMessage}
+        value={guestMessage}
         sx={{ width: '80%' }}
-        onChange={(e) => setLeavingMessage(e.target.value)}
+        onChange={(e) => setGuestMessage(e.target.value)}
         onKeyDown={(e) => {
           if (e.key == "Enter") {
             handleSendButton();
@@ -39,6 +40,6 @@ export default function CustomTextField({ theme, leavingMessage, setLeavingMessa
           },
         }}>Send</Typography>
       </Button>
-    </>
+    </Box>
   );
 }
