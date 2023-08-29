@@ -130,7 +130,10 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
 
 
 export async function getServerSideProps() {
-  const res = await fetch(apiEndPoint + '/guestbook', { method: "GET" });
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASEURL;
+  const api_endpoint = '/api/guestbook'
+
+  const res = await fetch(baseUrl + api_endpoint, { method: "GET" });
   const guestMessages = await res.json() as GuestbookMessageType[];
 
   if (!guestMessages) {
