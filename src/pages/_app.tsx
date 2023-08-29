@@ -12,7 +12,6 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import type GlobalStoreModel from "~/interfaces/globalStoreModel";
 
-
 import "@fontsource/manrope/200.css";
 import "@fontsource/manrope/300.css";
 import "@fontsource/manrope/400.css";
@@ -42,7 +41,7 @@ const InsideApp: AppType = ({ Component, ...pageProps }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
     </ThemeProvider>
   );
 };

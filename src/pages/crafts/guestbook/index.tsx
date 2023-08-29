@@ -9,7 +9,7 @@ import { SignInButton } from "~/components/common/AuthButtons";
 import type clientPromises from 'mongodb/mongodb'
 import GuestMessageList from "~/components/craft/guestbook/GuestMessageList";
 
-const APIENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+const apiEndPoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api' : 'https://tanmaysarkar.vercel.app/api';
 
 interface GuestbookMessageType {
   _id: clientPromises.BSON.ObjectId;
@@ -34,7 +34,6 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
     setGuestMessageList(pageProps.data);
   }, [pageProps]);
 
-
   const handleSendButton = () => {
     const currentGuestMessage = {
       name: session.data?.user?.name ?? "",
@@ -44,7 +43,7 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
     }
 
     const updateGuestbookMessages = async () => {
-      const res = await fetch(APIENDPOINT + '/guestbook', {
+      const res = await fetch(apiEndPoint + '/guestbook', {
         method: "POST",
         body: JSON.stringify(currentGuestMessage),
         headers: { "Content-Type": 'application/json' }
@@ -85,7 +84,7 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
           Message on my guestbooks
         </Typography>
         <Box marginY="2rem" sx={{ display: 'grid', gap: "1rem" }}>
-          {session.status == "authenticated" ?
+          {session && session.status == "authenticated" ?
             <>
               <CustomTextField
                 theme={theme}
@@ -131,7 +130,7 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
 
 
 export async function getServerSideProps() {
-  const res = await fetch(APIENDPOINT + '/guestbook', { method: "GET" });
+  const res = await fetch(apiEndPoint + '/guestbook', { method: "GET" });
   const guestMessages = await res.json() as GuestbookMessageType[];
 
   if (!guestMessages) {
