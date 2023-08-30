@@ -9,44 +9,46 @@ import { SignInButton } from "~/components/common/AuthButtons";
 import type clientPromises from 'mongodb/mongodb'
 import GuestMessageList from "~/components/craft/guestbook/GuestMessageList";
 
-// const apiEndPoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api' : 'https://tanmaysarkar.vercel.app/api';
-
 interface GuestbookMessageType {
   _id: clientPromises.BSON.ObjectId;
   name: string;
   email: string;
   image: string;
   message: string;
+  date: string;
 }
 
-interface GuestbookPageProps {
-  data: GuestbookMessageType[];
-}
-
-export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageProps }) {
+export default function GuestbookPage() {
   const theme = useTheme();
   const session = useSession();
 
   const [message, setMessage] = useState("");
-  const [guestMessageList, setGuestMessageList] = useState<GuestbookMessageType[]>(pageProps.data);
+  const [guestMessageList, setGuestMessageList] = useState<GuestbookMessageType[]>();
 
   useEffect(() => {
-    setGuestMessageList(pageProps.data);
-  }, [pageProps]);
+    const fetchGuestbookMessages = async () => {
+      const res = await fetch('/api/guestbook', { method: "GET" });
+      const guestMessages = await res.json() as GuestbookMessageType[];
+      return guestMessages;
+    }
+
+    void fetchGuestbookMessages().then((guestMessages) => {
+      setGuestMessageList(guestMessages);
+    });
+  }, []);
 
   const handleSendButton = () => {
+    const today = new Date().toDateString().split(" ");
     const currentGuestMessage = {
       name: session.data?.user?.name ?? "",
       image: session.data?.user?.image ?? "",
       email: session.data?.user?.email ?? "",
+      date: `${today[2]} ${today[1]} ${today[3]}`,
       message: message,
     }
 
     const updateGuestbookMessages = async () => {
-      const baseUrl = "https://tanmaysarkar.vercel.app";
-      const api_endpoint = '/api/guestbook'
-
-      const res = await fetch(baseUrl + api_endpoint, {
+      const res = await fetch('/api/guestbook', {
         method: "POST",
         body: JSON.stringify(currentGuestMessage),
         headers: { "Content-Type": 'application/json' }
@@ -59,7 +61,10 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
         ...currentGuestMessage,
         _id: insertedId as clientPromises.BSON.ObjectId,
       } as GuestbookMessageType;
-      setGuestMessageList(prev => ([...prev, insertedMessageObj]));
+      setGuestMessageList(prev => {
+        if (prev) { return [...prev, insertedMessageObj] }
+        else { return [insertedMessageObj] }
+      });
     }).finally(() => {
       setMessage("");
     });
@@ -130,26 +135,3 @@ export default function GuestbookPage({ pageProps }: { pageProps: GuestbookPageP
     </Layout >
   );
 };
-
-
-export async function getServerSideProps() {
-  const baseUrl = "https://tanmaysarkar.vercel.app";
-  const api_endpoint = '/api/guestbook'
-
-  const res = await fetch(baseUrl + api_endpoint, { method: "GET" });
-  const guestMessages = await res.json() as GuestbookMessageType[];
-
-  if (!guestMessages) {
-    return {
-      notFound: true,
-      redirect: {
-        destination: '/crafts',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: { data: guestMessages }
-  };
-}

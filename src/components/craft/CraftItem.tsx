@@ -12,8 +12,8 @@ export default function CraftItem({ craft }: { craft: CraftDetailsProps }) {
 
   return (
     <Grow in={true} timeout={craft.timeOut} mountOnEnter unmountOnExit>
-      <Link href={craft.url}>
-        <ListItem>
+      <ListItem>
+        <Link href={craft.url} style={{ width: '100%' }}>
           <ListItemButton sx={{
             borderRadius: theme.custom.clickableItem.borderRadius,
             backgroundColor: theme.custom.clickableItem.backgroundColor,
@@ -57,8 +57,8 @@ export default function CraftItem({ craft }: { craft: CraftDetailsProps }) {
               }}
             />
           </ListItemButton>
-        </ListItem>
-      </Link>
+        </Link>
+      </ListItem>
     </Grow>
   );
 }

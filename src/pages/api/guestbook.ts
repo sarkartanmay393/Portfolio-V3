@@ -11,7 +11,7 @@ export default async function handler(
 
   switch (req.method) {
     case "GET":
-      const guestMessages = await guestbook.find({}).toArray();
+      const guestMessages = await guestbook.find().sort({ date: -1 }).toArray();
       res.json(JSON.parse(JSON.stringify(guestMessages)));
       break;
     case "POST":

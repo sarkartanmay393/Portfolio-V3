@@ -27,7 +27,7 @@ export default function CraftsArea() {
         },
       }}>👨🏾‍💻 Some of my crafts</Typography>
 
-      <List >
+      <List>
         {CraftDetails.map((craft, i) => (
           <CraftItem key={craft.title} craft={{ ...craft, timeOut: i * 300 }} />
         ))}
