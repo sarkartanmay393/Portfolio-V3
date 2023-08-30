@@ -12,12 +12,14 @@ export const SignInButton = ({ theme }: SignInButtonProps) => {
   }
 
   return (
-    <Button fullWidth color="secondary" variant="contained" onClick={handleSignIn} startIcon={<GitHubIcon />} sx={{
-      boxShadow: 0,
-      ":hover": {
-        boxShadow: 0
-      },
-    }}>
+    <Button
+      aria-label="Sign in with Github"
+      fullWidth color="secondary" variant="contained" onClick={handleSignIn} startIcon={<GitHubIcon />} sx={{
+        boxShadow: 0,
+        ":hover": {
+          boxShadow: 0
+        },
+      }}>
       <Typography sx={{
         height: '100%',
         fontWeight: "700",

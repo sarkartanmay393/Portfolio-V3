@@ -1,10 +1,9 @@
-import BlogArea from "~/components/home/BlogArea";
 import Layout from "~/layout/layout";
+import BlogArea from "~/components/home/BlogArea";
 
 const BlogsPage = () => {
-
     return (
-        <Layout Title="Blogs | TSX" props={{ marginBottom: "4rem" }}>
+        <Layout Title="Blogs | TSX">
             <BlogArea />
         </Layout >
     );

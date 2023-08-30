@@ -17,11 +17,7 @@ const TabDetails = [
   { label: "about.", address: "/about" },
 ];
 
-interface NavBarProps {
-  hidePulse: boolean;
-}
-
-const NavigationBar = ({ hidePulse }: NavBarProps) => {
+const NavigationBar = () => {
   const theme = useTheme();
   const router = useRouter();
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
@@ -29,7 +25,6 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
   const handleTabSwitch = (tabAddress: string) => {
     void router.push(tabAddress);
   };
-
 
   return (
     <Box
@@ -40,7 +35,7 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
         display: "flex",
         border: `0.1px solid `.concat(theme.palette.divider),
         borderRadius: "2.8rem",
-        padding: "0.1rem",
+        paddingY: "0.1rem",
         justifyContent: "center",
         backgroundColor: theme.custom.navigation.bgColor,
         position: "fixed",
@@ -100,7 +95,7 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
           },
         }}
       >
-        {TabDetails.map((tab, i) => {
+        {TabDetails.map((tab) => {
           const isActive = router.pathname == tab.address;
           return (
             <Button

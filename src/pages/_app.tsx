@@ -7,6 +7,8 @@ import { useStoreState } from "~/store/typedHooks";
 import { StoreProvider, createStore } from "easy-peasy";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { SessionProvider } from "next-auth/react"
+import { Analytics } from '@vercel/analytics/react';
+
 
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
@@ -41,7 +43,8 @@ const InsideApp: AppType = ({ Component, ...pageProps }) => {
 
   return (
     <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
+      <Analytics />
     </ThemeProvider>
   );
 };

@@ -11,11 +11,9 @@ export default function Footer() {
       alignItems: 'center',
 
       marginTop: '2rem',
-      marginBottom: '3rem',
       padding: "2rem",
 
       gap: '0.4rem',
-
       backgroundColor: theme.custom.clickableItem.backgroundColorlight,
       borderRadius: theme.typography.pxToRem(8)
     }}>

@@ -1,5 +1,5 @@
-import { CardContent, Box, Typography, useTheme, Card, Avatar, Button, easing, Grow } from "@mui/material";
 import Image from "next/image";
+import { CardContent, Box, Typography, useTheme, Card, Button, easing, Grow, Skeleton } from "@mui/material";
 import type ClickableItemProps from "~/interfaces/clickableItem";
 
 interface ProjectCardProps extends ClickableItemProps {
@@ -34,8 +34,25 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
               padding: "0.6rem",
             },
           }}>
-            <Image aria-label={props.title + " logo"} style={{ borderRadius: '50%' }} width={48} height={48} src={props.image ?? ""} alt={props.title} />
+            {props.image &&
+              <Image
+                aria-label={props.title + " logo"}
+                width={48} height={48}
+                src={props.image ?? ""}
+                alt={props.title}
+                placeholder="empty"
+                priority
+                sizes="100vw"
+                style={{
+                  width: '48',
+                  height: '48',
+                  borderRadius: '50%',
+                  objectFit: "cover"
+                }}
+              />
+            }
             <Typography
+              marginTop={props.image ? '' : '1rem'}
               sx={{
                 fontWeight: "700",
                 lineHeight: "100%",
@@ -67,19 +84,21 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
             </Typography>
 
             <Box sx={{ display: 'flex', gap: '1rem', marginTop: '1.4rem', height: '3.6rem' }}>
-              <Button variant="outlined" color="secondary" href={props.demo} sx={{
-                ":hover": {
-                  borderWidth: '1.2px',
-                },
-                ":hover > .demo-btn": {
-                  fontWeight: 700,
-                },
-                transition: theme.transitions.create(["border-width", "font-weight"], {
-                  delay: 0,
-                  easing: easing.easeInOut,
-                  duration: "50ms",
-                })
-              }}>
+              <Button
+                aria-label={"demo of " + props.title}
+                variant="outlined" color="secondary" href={props.demo} sx={{
+                  ":hover": {
+                    borderWidth: '1.2px',
+                  },
+                  ":hover > .demo-btn": {
+                    fontWeight: 700,
+                  },
+                  transition: theme.transitions.create(["border-width", "font-weight"], {
+                    delay: 0,
+                    easing: easing.easeInOut,
+                    duration: "50ms",
+                  })
+                }}>
                 <Typography
                   className="demo-btn"
                   sx={{
@@ -96,19 +115,21 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
                   Demo
                 </Typography>
               </Button>
-              <Button variant="outlined" color="secondary" href={props.url} sx={{
-                ":hover": {
-                  borderWidth: '1.2px',
-                },
-                ":hover > .code-btn": {
-                  fontWeight: 700,
-                },
-                transition: theme.transitions.create(["border-width", "font-weight"], {
-                  duration: "50ms",
-                  easing: easing.easeInOut,
-                  delay: 0,
-                })
-              }}>
+              <Button
+                aria-label={"code view of " + props.title}
+                variant="outlined" color="secondary" href={props.url} sx={{
+                  ":hover": {
+                    borderWidth: '1.2px',
+                  },
+                  ":hover > .code-btn": {
+                    fontWeight: 700,
+                  },
+                  transition: theme.transitions.create(["border-width", "font-weight"], {
+                    duration: "50ms",
+                    easing: easing.easeInOut,
+                    delay: 0,
+                  })
+                }}>
                 <Typography
                   className="code-btn"
                   sx={{
@@ -130,6 +151,6 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
           </Box>
         </CardContent>
       </Card >
-    </Grow>
+    </Grow >
   );
 }

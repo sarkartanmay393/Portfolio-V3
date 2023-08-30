@@ -12,208 +12,209 @@ export default function IntroArea() {
   const theme = useTheme();
 
   return (
-    <Fade in={true} mountOnEnter unmountOnExit>
+    // <Fade in={true} mountOnEnter unmountOnExit>
+    <Box
+      sx={{
+        gap: "1.6rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <Box
         sx={{
-          gap: "1.6rem",
+          marginBottom: '1rem',
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          alignItems: "center",
+          gap: "0.8rem",
+          [theme.breakpoints.up("laptop")]: {
+            display: "none",
+          },
         }}
       >
-        <Box
-          sx={{
-            marginBottom: '1rem',
-            display: "flex",
-            alignItems: "center",
-            gap: "0.8rem",
-            [theme.breakpoints.up("laptop")]: {
-              display: "none",
-            },
-          }}
-        >
-          <Image src={VectorLogo as string} alt="tsx hero logo" />
-          <Typography
-            sx={{
-              fontWeight: "600",
-              textTransform: "lowercase",
-              color: String(theme.palette.primary),
-              [theme.breakpoints.down("laptop")]: {
-                fontSize: "4rem",
-              },
-            }}
-          >
-            tsx
-          </Typography>
-        </Box>
-        <Typography
-          sx={{
-            fontWeight: "800",
-            color: theme.palette.text.primary,
-            lineHeight: "100%",
-            [theme.breakpoints.up("mobile")]: {
-              fontSize: "3.2rem",
-            },
-            [theme.breakpoints.up("tablet")]: {
-              fontSize: "4.8rem",
-            },
-            "::selection": {
-              color:
-                theme.palette.mode === "light"
-                  ? theme.palette.secondary.main
-                  : theme.palette.secondary.light,
-            },
-          }}
-        >
-          {`Hey, I'm Tanmay -- the full-stack warrior who crafts digital masterpieces`}
-        </Typography>
+        <Image src={VectorLogo as string} alt="tsx hero logo" />
         <Typography
           sx={{
             fontWeight: "600",
-            lineHeight: "1.3",
-            color: theme.palette.text.secondary,
-            [theme.breakpoints.up("mobile")]: {
-              fontSize: "1.6rem",
-            },
-            [theme.breakpoints.up("tablet")]: {
-              fontSize: "2.2rem",
-            },
-            "::selection": {
-              backgroundColor: theme.palette.secondary.light,
-              color: theme.palette.text.primary,
+            textTransform: "lowercase",
+            color: String(theme.palette.primary),
+            [theme.breakpoints.down("laptop")]: {
+              fontSize: "4rem",
             },
           }}
         >
-          {`Fusing Design and Code, With a focus on polished,
+          tsx
+        </Typography>
+      </Box>
+      <Typography
+        sx={{
+          fontWeight: "800",
+          color: theme.palette.text.primary,
+          lineHeight: "100%",
+          [theme.breakpoints.up("mobile")]: {
+            fontSize: "3.2rem",
+          },
+          [theme.breakpoints.up("tablet")]: {
+            fontSize: "4.8rem",
+          },
+          "::selection": {
+            color:
+              theme.palette.mode === "light"
+                ? theme.palette.secondary.main
+                : theme.palette.secondary.light,
+          },
+        }}
+      >
+        {`Hey, I'm Tanmay -- the full-stack warrior who crafts digital masterpieces`}
+      </Typography>
+      <Typography
+        sx={{
+          fontWeight: "600",
+          lineHeight: "1.3",
+          color: theme.palette.text.secondary,
+          [theme.breakpoints.up("mobile")]: {
+            fontSize: "1.6rem",
+          },
+          [theme.breakpoints.up("tablet")]: {
+            fontSize: "2.2rem",
+          },
+          "::selection": {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.text.primary,
+          },
+        }}
+      >
+        {`Fusing Design and Code, With a focus on polished,
           distinctive products, I elevate brand presence, leave lasting
           impressions on users, founders, startups, and creators. Driven by
           passion and creativity, I thrive on pushing boundaries in the
           evolving tech landscape.`}
-        </Typography>
-        <Box
+      </Typography>
+      <Box
+        sx={{
+          gap: "1rem",
+          display: "flex",
+          cursor: "default",
+          alignItems: "center",
+          flexDirection: "row",
+        }}
+      >
+        <Image
+          aria-label="availability dot animation"
+          className="green_dot"
+          src={GreenDot as string} alt="availability dot" priority />
+        <Typography
           sx={{
-            gap: "1rem",
-            display: "flex",
-            cursor: "default",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
-        >
-          <Image className="green_dot" src={GreenDot as string} alt="availability dot" />
-          <Typography
-            sx={{
-              fontWeight: "400",
-              color: theme.palette.text.secondary,
-              [theme.breakpoints.up("mobile")]: {
-                fontSize: "1.4rem",
-              },
-              [theme.breakpoints.up("tablet")]: {
-                fontSize: "1.5rem",
-              },
-              "::selection": {
-                backgroundColor: "rgba(0,0,0,0)",
-              },
-            }}
-          >
-            {`Available for new opportunities`}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
+            fontWeight: "400",
+            color: theme.palette.text.secondary,
             [theme.breakpoints.up("mobile")]: {
-              gap: "0.8rem",
-              flexDirection: "column",
+              fontSize: "1.4rem",
             },
             [theme.breakpoints.up("tablet")]: {
-              gap: "1.6rem",
-              flexDirection: "row",
+              fontSize: "1.5rem",
+            },
+            "::selection": {
+              backgroundColor: "rgba(0,0,0,0)",
             },
           }}
         >
-          <Button
-            aria-label="send me mail"
-            href="mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding..."
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "0.8rem",
-              padding: "0.8rem 1.6rem",
-              borderRadius: "2.8rem",
-              backgroundColor: theme.palette.secondary.dark,
-              minWidth: "20%",
-              [theme.breakpoints.between("mobile", "tablet")]: {
-                minWidth: "100%",
-              },
-              ":hover": {
-                backgroundColor: theme.palette.secondary.main,
-              },
-            }}
-          >
-            <Typography
-              aria-label="send me mail text"
-              sx={{
-                fontWeight: "600",
-                textTransform: "lowercase",
-                color: theme.custom.button.textColor,
-                [theme.breakpoints.up("mobile")]: {
-                  fontSize: "1.6rem",
-                },
-                [theme.breakpoints.up("tablet")]: {
-                  fontSize: "2rem",
-                },
-              }}
-            >
-              Hire me
-            </Typography>
-            <SendSharpIcon sx={{ fontSize: "1.8rem", translate: "0 1.5px" }} />
-          </Button>
-          <Button
-            aria-label="send a message for me"
-            href="/crafts/guestbook"
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "0.6rem",
-              padding: "0.8rem 2.6rem",
-              borderRadius: "2.8rem",
-              backgroundColor: theme.palette.primary.contrastText,
-              border: `0.05rem solid ${theme.palette.primary.light}`,
-              [theme.breakpoints.between("mobile", "tablet")]: {
-                "min-width": "100%",
-              },
-              ":hover": {
-                backgroundColor: theme.custom.button.onHoverBgColor,
-              },
-            }}
-          >
-            <Typography
-              aria-label="send a message for me text"
-              sx={{
-                fontWeight: "600",
-                textTransform: "lowercase",
-                color: theme.custom.button.textColor,
-                [theme.breakpoints.up("mobile")]: {
-                  fontSize: "1.6rem",
-                },
-                [theme.breakpoints.up("tablet")]: {
-                  fontSize: "2rem",
-                },
-              }}
-            >
-              leave a message
-            </Typography>
-            <Image
-              width={20}
-              src={MessageCross as string}
-              alt="leave a message using github"
-            />
-          </Button>
-        </Box>
+          {`Available for new opportunities`}
+        </Typography>
       </Box>
-    </Fade>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          [theme.breakpoints.up("mobile")]: {
+            gap: "0.8rem",
+            flexDirection: "column",
+          },
+          [theme.breakpoints.up("tablet")]: {
+            gap: "1.6rem",
+            flexDirection: "row",
+          },
+        }}
+      >
+        <Button
+          aria-label="Hire me by sending email"
+          href="mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding..."
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "0.8rem",
+            padding: "0.8rem 1.6rem",
+            borderRadius: "2.8rem",
+            backgroundColor: theme.palette.secondary.dark,
+            minWidth: "20%",
+            [theme.breakpoints.between("mobile", "tablet")]: {
+              minWidth: "100%",
+            },
+            ":hover": {
+              backgroundColor: theme.palette.secondary.main,
+            },
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: "600",
+              textTransform: "lowercase",
+              color: theme.custom.button.textColor,
+              [theme.breakpoints.up("mobile")]: {
+                fontSize: "1.6rem",
+              },
+              [theme.breakpoints.up("tablet")]: {
+                fontSize: "2rem",
+              },
+            }}
+          >
+            Hire me
+          </Typography>
+          <SendSharpIcon sx={{ fontSize: "1.8rem", translate: "0 1.5px" }} />
+        </Button>
+        <Button
+          aria-label="leave a message for me"
+          href="/crafts/guestbook"
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "0.6rem",
+            padding: "0.8rem 2.6rem",
+            borderRadius: "2.8rem",
+            backgroundColor: theme.palette.primary.contrastText,
+            border: `0.05rem solid ${theme.palette.primary.light}`,
+            [theme.breakpoints.between("mobile", "tablet")]: {
+              "min-width": "100%",
+            },
+            ":hover": {
+              backgroundColor: theme.custom.button.onHoverBgColor,
+            },
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: "600",
+              textTransform: "lowercase",
+              color: theme.custom.button.textColor,
+              [theme.breakpoints.up("mobile")]: {
+                fontSize: "1.6rem",
+              },
+              [theme.breakpoints.up("tablet")]: {
+                fontSize: "2rem",
+              },
+            }}
+          >
+            leave a message
+          </Typography>
+          <Image
+            width={20}
+            src={MessageCross as string}
+            alt="leave a message using github"
+          />
+        </Button>
+      </Box>
+    </Box>
+    // </Fade>
   );
 };
 

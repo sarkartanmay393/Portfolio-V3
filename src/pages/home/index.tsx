@@ -7,19 +7,13 @@ import BlogArea from "~/components/home/BlogArea";
 import Footer from "~/components/Footer";
 
 const HomePage = () => {
-
   return (
     <Layout Title={"Home | TSX"}>
-      <Box
-        sx={{
-          gap: "6rem",
-          display: "flex",
-          flexDirection: "column",
-
-          // overflowY: "auto",
-          // scrollSnapType: "y mandatory",
-        }}
-      >
+      <Box sx={{
+        gap: "6rem",
+        display: "flex",
+        flexDirection: "column",
+      }}>
         <IntroArea />
         <ProjectArea />
         <BlogArea />
