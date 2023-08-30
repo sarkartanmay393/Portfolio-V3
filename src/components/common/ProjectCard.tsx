@@ -1,4 +1,5 @@
 import { CardContent, Box, Typography, useTheme, Card, Avatar, Button, easing, Grow } from "@mui/material";
+import Image from "next/image";
 import type ClickableItemProps from "~/interfaces/clickableItem";
 
 interface ProjectCardProps extends ClickableItemProps {
@@ -33,7 +34,7 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
               padding: "0.6rem",
             },
           }}>
-            <Avatar sx={{ width: '48px', height: '48px' }} src={props.image} alt={props.title} />
+            <Image aria-label={props.title + " logo"} style={{ borderRadius: '50%' }} width={48} height={48} src={props.image ?? ""} alt={props.title} />
             <Typography
               sx={{
                 fontWeight: "700",

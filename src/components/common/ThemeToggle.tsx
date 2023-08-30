@@ -30,7 +30,7 @@ export const ThemeToggle = ({ isDarkMode, setIsDarkMode }: ThemeToggleProps) => 
     }}>
       <input
         id="toggle"
-        aria-label=""
+        aria-label="theme toggler"
         className="toggle"
         type="checkbox"
         alt="theme toggler"

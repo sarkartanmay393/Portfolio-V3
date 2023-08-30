@@ -1,7 +1,7 @@
+import React from "react";
 import Image from "next/image";
 import { Typography, Box, Button, useTheme, Fade } from "@mui/material";
 
-import React from "react";
 import VectorLogo from "../../assets/logo.svg";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
@@ -12,15 +12,13 @@ export default function IntroArea() {
   const theme = useTheme();
 
   return (
-    <Fade timeout={200} in={true} mountOnEnter unmountOnExit>
+    <Fade in={true} mountOnEnter unmountOnExit>
       <Box
         sx={{
           gap: "1.6rem",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-
-          // scrollSnapAlign: 'start',
         }}
       >
         <Box
@@ -154,6 +152,7 @@ export default function IntroArea() {
             }}
           >
             <Typography
+              aria-label="send me mail text"
               sx={{
                 fontWeight: "600",
                 textTransform: "lowercase",
@@ -171,6 +170,7 @@ export default function IntroArea() {
             <SendSharpIcon sx={{ fontSize: "1.8rem", translate: "0 1.5px" }} />
           </Button>
           <Button
+            aria-label="send a message for me"
             href="/crafts/guestbook"
             sx={{
               display: "flex",
@@ -190,6 +190,7 @@ export default function IntroArea() {
             }}
           >
             <Typography
+              aria-label="send a message for me text"
               sx={{
                 fontWeight: "600",
                 textTransform: "lowercase",

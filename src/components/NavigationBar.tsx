@@ -27,7 +27,7 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   const handleTabSwitch = (tabAddress: string) => {
-     void router.push(tabAddress);
+    void router.push(tabAddress);
   };
 
 
@@ -104,7 +104,6 @@ const NavigationBar = ({ hidePulse }: NavBarProps) => {
           const isActive = router.pathname == tab.address;
           return (
             <Button
-              tabIndex={i}
               key={tab.label}
               disableRipple
               sx={{
