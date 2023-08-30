@@ -3,11 +3,12 @@ import Layout from "~/layout/layout";
 import { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react"
 import CustomTextField from "~/components/craft/guestbook/CustomTextField";
-import { Box, Button, CircularProgress, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Breadcrumbs, Button, CircularProgress, Grid, Typography, useTheme } from "@mui/material";
 import { SignInButton } from "~/components/common/AuthButtons";
 
 import type clientPromises from 'mongodb/mongodb'
 import GuestMessageList from "~/components/craft/guestbook/GuestMessageList";
+import Link from "next/link";
 
 interface GuestbookMessageType {
   _id: clientPromises.BSON.ObjectId;
@@ -72,12 +73,11 @@ export default function GuestbookPage() {
 
   return (
     <Layout Title="guestbook">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Breadcrumbs sx={{ [theme.breakpoints.up('tablet')]: { display: '' } }}>
+          <Link href={"/crafts"}>crafts</Link>
+          <Link href={"/crafts/guestbook"}>guestbook</Link>
+        </Breadcrumbs>
         <Typography
           sx={{
             fontWeight: "600",
@@ -130,7 +130,6 @@ export default function GuestbookPage() {
         <Grid sx={{}}>
           <GuestMessageList theme={theme} guestMessageList={guestMessageList} />
         </Grid>
-
       </Box>
     </Layout >
   );

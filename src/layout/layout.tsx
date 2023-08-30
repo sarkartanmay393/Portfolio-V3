@@ -62,7 +62,7 @@ const Layout = ({ Title, children, props }: CAppType) => {
             },
             [theme.breakpoints.up("laptop")]: {
               width: "65vw",
-              paddingTop: "160px",
+              paddingTop: "120px",
             },
           }}
         >

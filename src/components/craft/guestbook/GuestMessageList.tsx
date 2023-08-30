@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Box, Grow, List, ListItem, ListItemAvatar, ListItemText, Skeleton, Typography, type Theme } from "@mui/material";
-import type clientPromises from 'mongodb/mongodb'
+import type clientPromises from 'mongodb/mongodb';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -29,7 +29,7 @@ export default function GuestMessageList({ theme, guestMessageList }: GuestMessa
   return (
     <List>
       {guestMessageList.map((guestBlock, i) => (
-        <Grow key={guestBlock._id.toString()} in={true} timeout={i * 150} mountOnEnter unmountOnExit>
+        <Grow key={guestBlock._id.toString()} in={true} timeout={i * 300} mountOnEnter unmountOnExit>
           <ListItem sx={{
             padding: 0,
             paddingY: '6px',
@@ -71,6 +71,7 @@ export default function GuestMessageList({ theme, guestMessageList }: GuestMessa
                     },
                   },
                   ".MuiListItemText-secondary": {
+                    letterSpacing: '0.5px',
                     [theme.breakpoints.up("mobile")]: {
                       fontSize: "1rem",
                     },
