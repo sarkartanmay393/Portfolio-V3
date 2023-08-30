@@ -2,13 +2,11 @@ import { Button, type Theme, Typography } from "@mui/material";
 import { signIn } from "next-auth/react"
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-
 interface SignInButtonProps {
   theme: Theme,
 }
 
 export const SignInButton = ({ theme }: SignInButtonProps) => {
-
   const handleSignIn = () => {
     signIn().finally(() => { return });
   }

@@ -62,7 +62,7 @@ export default function BlogCard({ props }: { props: BlogCardProps }) {
                 <Typography
                   sx={{
                     fontWeight: "500",
-                    lineHeight: "100%",
+                    lineHeight: "112%",
                     color: theme.palette.text.secondary,
                     [theme.breakpoints.up("mobile")]: {
                       display: 'none',
@@ -86,7 +86,7 @@ export default function BlogCard({ props }: { props: BlogCardProps }) {
                 alignItems: 'center',
                 width: "15%",
               }}>
-                <CallMadeIcon sx={{
+                <CallMadeIcon titleAccess="blog refer link" sx={{
                   [theme.breakpoints.up("mobile")]: {
                     fontSize: '2.6rem',
                   },

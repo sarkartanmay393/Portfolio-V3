@@ -10,7 +10,7 @@ interface HeroTitleProps {
 export const HeroTitle = ({ theme, props }: HeroTitleProps) => {
   return (
     <>
-      <Image {...props} src={VectorLogo as string} alt="" />
+      <Image aria-label="TSX Logo" {...props} src={VectorLogo as string} alt="tsx hero logo" />
       <Typography
         sx={{
           display: 'none',

@@ -13,7 +13,7 @@ export default function CraftItem({ craft }: { craft: CraftDetailsProps }) {
   return (
     <Grow in={true} timeout={craft.timeOut} mountOnEnter unmountOnExit>
       <ListItem>
-        <Link href={craft.url} style={{ width: '100%' }}>
+        <Link aria-label="craft item dedicated page" href={craft.url} style={{ width: '100%' }}>
           <ListItemButton sx={{
             borderRadius: theme.custom.clickableItem.borderRadius,
             backgroundColor: theme.custom.clickableItem.backgroundColor,
@@ -21,8 +21,8 @@ export default function CraftItem({ craft }: { craft: CraftDetailsProps }) {
               backgroundColor: theme.custom.clickableItem.onHoverBackgroundColor,
             }
           }}>
-            <ListItemAvatar>
-              <Avatar>
+            <ListItemAvatar aria-label="craft logo">
+              <Avatar alt="craft logo">
                 {craft.emoji}
               </Avatar>
             </ListItemAvatar>

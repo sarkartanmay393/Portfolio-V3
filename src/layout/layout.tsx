@@ -27,10 +27,11 @@ const Layout = ({ Title, children, props }: CAppType) => {
     <>
       <Head>
         <title>{Title}</title>
-        <meta
-          name="description"
-          content="Personal portfolio of software engineer cum full stack web developer."
-        />
+        <meta name="language" content="en" />
+        <meta name="author" content="Tanmay Sarkar" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Personal po rtfolio of software engineer cum full stack web developer." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

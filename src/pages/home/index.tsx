@@ -9,7 +9,7 @@ import Footer from "~/components/Footer";
 const HomePage = () => {
 
   return (
-    <Layout Title={"Home"}>
+    <Layout Title={"Home | TSX"}>
       <Box
         sx={{
           gap: "6rem",

@@ -5,7 +5,7 @@ const AboutPage = () => {
     const theme = useTheme();
 
     return (
-        <Layout Title="About">
+        <Layout Title="About | TSX">
             <Fade in={true} timeout={300} mountOnEnter unmountOnExit>
                 <Box
                     sx={{

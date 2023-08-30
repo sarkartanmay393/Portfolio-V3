@@ -63,7 +63,7 @@ export default function GuestbookPage() {
         _id: insertedId as clientPromises.BSON.ObjectId,
       } as GuestbookMessageType;
       setGuestMessageList(prev => {
-        if (prev) { return [...prev, insertedMessageObj] }
+        if (prev) { return [insertedMessageObj, ...prev] }
         else { return [insertedMessageObj] }
       });
     }).finally(() => {
@@ -72,7 +72,7 @@ export default function GuestbookPage() {
   }
 
   return (
-    <Layout Title="guestbook">
+    <Layout Title="guestbook | TSX">
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Breadcrumbs sx={{ [theme.breakpoints.up('tablet')]: { display: '' } }}>
           <Link href={"/crafts"}>crafts</Link>

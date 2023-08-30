@@ -33,8 +33,7 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
               padding: "0.6rem",
             },
           }}>
-            <Avatar src={props.image}></Avatar>
-
+            <Avatar sx={{ width: '48px', height: '48px' }} src={props.image} alt={props.title} />
             <Typography
               sx={{
                 fontWeight: "700",
@@ -50,11 +49,10 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
             >
               {props.title}
             </Typography>
-
             <Typography
               sx={{
                 fontWeight: "500",
-                lineHeight: "100%",
+                lineHeight: "112%",
                 color: theme.palette.text.primary,
                 [theme.breakpoints.up("mobile")]: {
                   fontSize: "1.4rem",

@@ -3,7 +3,7 @@ import CraftsArea from "~/components/craft/CraftArea";
 
 export default function CraftsPage() {
     return (
-        <Layout Title="Crafts" props={{}}>
+        <Layout Title="Crafts | TSX" props={{}}>
             <CraftsArea />
         </Layout>
     );

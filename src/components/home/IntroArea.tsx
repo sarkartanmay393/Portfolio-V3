@@ -34,7 +34,7 @@ export default function IntroArea() {
             },
           }}
         >
-          <Image src={VectorLogo as string} alt="" />
+          <Image src={VectorLogo as string} alt="tsx hero logo" />
           <Typography
             sx={{
               fontWeight: "600",
@@ -135,6 +135,7 @@ export default function IntroArea() {
           }}
         >
           <Button
+            aria-label="send me mail"
             href="mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding..."
             sx={{
               display: "flex",
