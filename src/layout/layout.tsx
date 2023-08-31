@@ -42,7 +42,7 @@ const Layout = ({ Title, children, props }: CAppType) => {
         alignItems: "center",
         overflowY: "scroll",
       }}>
-        <NavigationBar hidePulse={false} />
+        <NavigationBar />
 
         <Box
           sx={{

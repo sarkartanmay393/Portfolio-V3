@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { CardContent, Box, Typography, useTheme, Card, Grow } from "@mui/material";
-import type ClickableItemProps from "~/interfaces/clickableItem";
+
 import CallMadeIcon from '@mui/icons-material/CallMade';
+import type ClickableItemProps from "~/interfaces/clickableItem";
 
 interface BlogCardProps extends ClickableItemProps {
   timeOut?: number,
@@ -9,6 +10,7 @@ interface BlogCardProps extends ClickableItemProps {
 
 export default function BlogCard({ props }: { props: BlogCardProps }) {
   const theme = useTheme();
+
   return (
     <Grow in={true} timeout={props.timeOut} mountOnEnter unmountOnExit>
       <Link style={{ textDecoration: 0 }} href={props.url ?? ""}>
