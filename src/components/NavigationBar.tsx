@@ -54,6 +54,7 @@ const NavigationBar = () => {
         [theme.breakpoints.up("laptop")]: {
           width: "68%",
           justifyContent: "space-between",
+          paddingX: "0.1rem",
         },
         transition: theme.transitions.create('all', {
           delay: 100,

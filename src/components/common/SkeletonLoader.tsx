@@ -5,9 +5,10 @@ interface LoaderProps {
   h: number,
   v: 'text' | 'rectangular' | 'rounded' | 'circular',
   sx?: SxProps<Theme>
+  responsiveHeight: number
 }
 
-export default function Loader({ w, h, v, sx }: LoaderProps) {
+export default function Loader({ w, h, v, sx, responsiveHeight }: LoaderProps) {
   const theme = useTheme();
   return (
     <Grow in={true} mountOnEnter unmountOnExit>
@@ -17,7 +18,7 @@ export default function Loader({ w, h, v, sx }: LoaderProps) {
           height: `${h}px`,
         },
         [theme.breakpoints.up('tablet')]: {
-          height: `${h + 60}px`
+          height: `${h + responsiveHeight}px`
         },
       }} animation="wave" >
       </Skeleton>

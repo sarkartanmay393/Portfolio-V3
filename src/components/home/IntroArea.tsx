@@ -1,18 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import { Typography, Box, Button, useTheme, Fade } from "@mui/material";
+import { Typography, Box, Button, useTheme } from "@mui/material";
 
 import VectorLogo from "../../assets/logo.svg";
 import GreenDot from "../../assets/green_dot.svg";
 import MessageCross from "../../assets/message_cross.svg";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
 
+const headline1 = `Hey, I'm Tanmay -- the full-stack warrior who crafts digital masterpieces`;
+const headline2 = `Fusing Design and Code, With a focus on polished, distinctive products, I elevate brand presence, leave lasting impressions on users, founders, startups, and creators. Driven bypassion and creativity, I thrive on pushing boundaries in the evolving tech landscape.`;
 
 export default function IntroArea() {
   const theme = useTheme();
 
   return (
-    // <Fade in={true} mountOnEnter unmountOnExit>
     <Box
       sx={{
         gap: "1.6rem",
@@ -65,7 +66,7 @@ export default function IntroArea() {
           },
         }}
       >
-        {`Hey, I'm Tanmay -- the full-stack warrior who crafts digital masterpieces`}
+        {headline1}
       </Typography>
       <Typography
         sx={{
@@ -84,11 +85,7 @@ export default function IntroArea() {
           },
         }}
       >
-        {`Fusing Design and Code, With a focus on polished,
-          distinctive products, I elevate brand presence, leave lasting
-          impressions on users, founders, startups, and creators. Driven by
-          passion and creativity, I thrive on pushing boundaries in the
-          evolving tech landscape.`}
+        {headline2}
       </Typography>
       <Box
         sx={{
@@ -137,7 +134,7 @@ export default function IntroArea() {
       >
         <Button
           aria-label="Hire me by sending email"
-          href="mailto:sarkartanmay393@gmail.com?subject=Hi I wanted to contact the you&body=Hi, I'm X, I wanted to contact the you regarding..."
+          href="mailto:sarkartanmay393@gmail.com?subject=Hi, Nice to meet you&body=Hi, I'm X, I wanted to contact you regarding..."
           sx={{
             display: "flex",
             flexDirection: "row",
@@ -214,7 +211,6 @@ export default function IntroArea() {
         </Button>
       </Box>
     </Box>
-    // </Fade>
   );
 };
 

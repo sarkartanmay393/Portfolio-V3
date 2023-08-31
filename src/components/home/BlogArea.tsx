@@ -51,7 +51,7 @@ export default function BlogArea() {
           backgroundColor: "rgba(0,0,0,0)",
         },
       }}>📝 BLOGS</Typography>
-      {loading && <Loader w="100%" h={60} v='rectangular' sx={{ borderRadius: theme.custom.clickableItem.borderRadius }} />}
+      {loading && <Loader w="100%" h={60} responsiveHeight={60} v='rectangular' sx={{ borderRadius: theme.custom.clickableItem.borderRadius }} />}
       {!loading && blogs?.map((bd, i) => (<BlogCard key={i} props={{ timeOut: i * 300, ...bd }} />))}
     </Box>
   );

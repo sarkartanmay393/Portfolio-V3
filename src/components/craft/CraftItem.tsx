@@ -12,7 +12,7 @@ export default function CraftItem({ craft }: { craft: CraftDetailsProps }) {
 
   return (
     <Grow in={true} timeout={craft.timeOut} mountOnEnter unmountOnExit>
-      <ListItem>
+      <ListItem disablePadding>
         <Link aria-label="craft item dedicated page" href={craft.url} style={{ width: '100%' }}>
           <ListItemButton sx={{
             borderRadius: theme.custom.clickableItem.borderRadius,

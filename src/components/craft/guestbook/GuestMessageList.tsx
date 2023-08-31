@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import { Box, Grow, List, ListItem, ListItemAvatar, ListItemText, Skeleton, Typography, type Theme, Collapse, Button } from "@mui/material";
-import type clientPromises from 'mongodb/mongodb';
+import { Box, Grow, List, ListItem, ListItemAvatar, ListItemText, Typography, type Theme, Collapse } from "@mui/material";
+import { TransitionGroup } from 'react-transition-group';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { TransitionGroup } from 'react-transition-group';
+import Loader from '~/components/common/SkeletonLoader';
+import type clientPromises from 'mongodb/mongodb';
 
 interface GuestMessageListProps {
   theme: Theme,
@@ -22,8 +23,7 @@ export default function GuestMessageList({ theme, guestMessageList }: GuestMessa
 
   if (!guestMessageList) {
     return (
-      <Skeleton width="100%" height={84}>
-      </Skeleton>
+      <Loader w="100%" h={50} responsiveHeight={10} v='rectangular' sx={{ borderRadius: theme.custom.clickableItem.borderRadius }} />
     );
   }
 
