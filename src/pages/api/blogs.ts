@@ -39,6 +39,10 @@ const queryGeneratorPerPage = (pageNo: number) => {
           title
           brief
           slug
+          coverImage
+          readTime
+          dateAdded
+          views
         }
       }
     }

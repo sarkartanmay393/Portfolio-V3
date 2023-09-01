@@ -20,6 +20,9 @@ export default function Loader({ w, h, v, sx, responsiveHeight }: LoaderProps) {
         [theme.breakpoints.up('tablet')]: {
           height: `${h + responsiveHeight}px`
         },
+        [theme.breakpoints.up('laptop')]: {
+          height: `${h + responsiveHeight / 2}px`
+        },
       }} animation="wave" >
       </Skeleton>
     </Grow >

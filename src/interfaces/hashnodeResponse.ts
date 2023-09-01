@@ -8,6 +8,10 @@ export default interface HashnodeResponse {
             title: string;
             brief: string;
             slug: string;
+            coverImage: string;
+            readTime: number;
+            dateAdded: string;
+            views: number;
           }
         ];
       };

@@ -5,4 +5,8 @@ export default interface ClickableItemProps {
   image?: string;
   demo?: string;
   madeby?: string;
+
+  readTime?: number;
+  dateAdded?: string;
+  views?: number;
 }
