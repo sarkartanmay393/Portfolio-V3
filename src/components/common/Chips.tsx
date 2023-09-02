@@ -6,14 +6,16 @@ interface CustomChipProps {
   width?: string | number;
   height?: string | number;
   icon?: React.ReactElement;
+  size?: 'small' | 'medium';
 }
 
-const CustomChip = ({ label, variant, width, height, icon }: CustomChipProps) => {
+const CustomChip = ({ label, variant, width, height, icon, size = "small" }: CustomChipProps) => {
   return (
-    <Chip label={label} variant={variant} icon={icon} sx={{
+    <Chip size={size} label={label} variant={variant} icon={icon} sx={{
       width: { width },
       height: { height },
-      paddingX: '8px',
+      borderRadius: '6px',
+      padding: '4px',
     }} />
   );
 }
