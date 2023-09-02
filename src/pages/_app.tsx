@@ -1,14 +1,13 @@
 import "~/styles/globals.css";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Theme from "../theme/theme";
 import globalStore from "~/store/globalStore";
-import { useStoreState } from "~/store/typedHooks";
 import { StoreProvider, createStore } from "easy-peasy";
-import { ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import { SessionProvider } from "next-auth/react"
 import { Analytics } from '@vercel/analytics/react';
-
+import { useStoreActions, useStoreState } from "~/store/typedHooks";
 
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
@@ -38,7 +37,19 @@ const PortfolioApp: AppType<{ session: Session }> = ({ Component, pageProps: { s
 
 // Insider Component
 const InsideApp: AppType = ({ Component, ...pageProps }) => {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const setTheme = useStoreActions((actions) => actions.setTheme);
   const mode = useStoreState((state) => state.theme.mode);
+
+
+  // TODO: How to override prev mode with anything else
+  const [, setPrevThemeMode] = useState("");
+  useEffect(() => {
+    localStorage.setItem('theme', mode);
+    setPrevThemeMode(localStorage.getItem('theme') ?? "");
+  }, [mode]);
+
+  useEffect(() => { setTheme(prefersDarkMode ? 'dark' : 'light') }, [prefersDarkMode]);
   const theme = React.useMemo(() => createTheme(Theme(mode)), [mode]);
 
   return (
