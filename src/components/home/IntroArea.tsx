@@ -4,6 +4,7 @@ import { Typography, Box, Button, useTheme } from "@mui/material";
 
 import VectorLogo from "../../assets/logo.svg";
 import GreenDot from "../../assets/green_dot.svg";
+import RedDot from "../../assets/red_dot.svg"
 import MessageCross from "../../assets/message_cross.svg";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
 
@@ -13,7 +14,15 @@ const headline2 = `Fusing Design and Code, With a focus on polished, distinctive
 export default function IntroArea() {
   const theme = useTheme();
 
-  return (
+  const status =false;
+  let currentDot=RedDot;
+  let Animation = "red_dot";
+  if(status){
+    currentDot = GreenDot
+    Animation= "green_dot";
+  }
+
+  return ( 
     <Box
       sx={{
         gap: "1.6rem",
@@ -98,8 +107,9 @@ export default function IntroArea() {
       >
         <Image
           aria-label="availability dot animation"
-          className="green_dot"
-          src={GreenDot as string} alt="availability dot" priority />
+          className= {Animation}
+          src={currentDot as string} alt="availability dot" priority />
+
         <Typography
           sx={{
             fontWeight: "400",

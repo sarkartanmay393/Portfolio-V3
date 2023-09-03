@@ -19,7 +19,7 @@ const HomePage = () => {
         <BlogArea />
         <Footer />
       </Box>
-    </Layout>
+    </Layout> 
   );
 };
 
