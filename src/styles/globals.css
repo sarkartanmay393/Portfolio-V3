@@ -32,6 +32,31 @@ body {
   }
 }
 
+@keyframes glowingRed {
+  0% {
+    box-shadow: 0 0 5px #a80505;
+  }
+  40% {
+    box-shadow: 0 0 15px #a80505;
+  }
+  50% {
+    box-shadow: 0 0 20px #e8194d;
+  }
+  100% {
+    box-shadow: 0 0 5px #a8057f;
+  }
+}
+
+.red_dot{
+  border-radius: 100%;
+  animation: glowingRed 1300ms infinite;
+  border: 0.1px solid #590505be;
+}
+
+.red_dot::selection{
+  background-color: #00000000;
+}
+
 .green_dot {
   border-radius: 100%;
   animation: glowing 1300ms infinite;
