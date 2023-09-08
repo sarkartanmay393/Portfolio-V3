@@ -15,10 +15,10 @@ export default function IntroArea() {
   const theme = useTheme();
 
   const status =false;
-  let currentDot=RedDot;
+  let currentDot=RedDot as unknown;
   let Animation = "red_dot";
   if(status){
-    currentDot = GreenDot
+    currentDot = GreenDot as unknown;
     Animation= "green_dot";
   }
 
