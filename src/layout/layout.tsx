@@ -53,11 +53,11 @@ const Layout = ({ Title, children, props }: CAppType) => {
             },
             [theme.breakpoints.up("tablet")]: {
               width: "75vw",
-              marginTop: "6rem",
+              // marginTop: "6rem",
             },
             [theme.breakpoints.up("laptop")]: {
               width: "65vw",
-              marginTop: "120px",
+              marginTop: "108px",
               marginBottom: '4rem',
             },
             ...props,

@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import Layout from "~/layout/layout";
 
 import ProjectArea from "~/components/home/ProjectArea";
@@ -16,6 +16,7 @@ const HomePage = () => {
       }}>
         <IntroArea />
         <ProjectArea />
+        <Divider sx={{ opacity: 0.3 }} variant="middle" />
         <BlogArea />
         <Footer />
       </Box>

@@ -27,19 +27,26 @@ export default function CraftsArea() {
         },
       }}>👨🏾‍💻 Some of my crafts</Typography>
 
-      <List>
+      <List sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {CraftDetails.map((craft, i) => (
           <CraftItem key={craft.title} craft={{ ...craft, timeOut: i * 300 }} />
         ))}
       </List>
 
-    </Box>
+    </Box >
   );
 };
 
-const CraftDetails = [{
-  title: "Guestbook",
-  description: "Sign in with Github and leave any message for the community",
-  url: "/crafts/guestbook",
-  emoji: "📇",
-}];
+const CraftDetails = [
+  {
+    title: "Guestbook",
+    description: "Sign in with Github and leave any message for the community",
+    url: "/crafts/guestbook",
+    emoji: "📇",
+  }, {
+    title: "Algorithm Visualizer",
+    description: "Generate an array and click on sort to see the visuals",
+    url: "https://algo-visuals-psi.vercel.app/",
+    emoji: "🎹",
+  },
+];

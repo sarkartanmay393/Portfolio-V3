@@ -13,8 +13,8 @@ export default function ProjectCard({ props }: { props: ProjectCardProps }) {
     <Grow in={true} timeout={props.timeOut} mountOnEnter unmountOnExit>
       <Card
         className="blogcard"
+        elevation={0}
         sx={{
-          boxShadow: 0,
           cursor: 'pointer',
           borderRadius: theme.custom.clickableItem.borderRadius,
           backgroundColor: theme.custom.clickableItem.backgroundColorlight,

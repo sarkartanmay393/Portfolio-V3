@@ -70,8 +70,9 @@ export default function BlogCard({ props }: { props: BlogCardProps }) {
       <Link style={{ textDecoration: 0 }} href={props.url ?? ""} target="_blank">
         <Card
           className="blogcard"
+          elevation={0}
           sx={{
-            boxShadow: 0,
+            width: '100%',
             cursor: 'pointer',
             backgroundImage: 'none',
             borderRadius: theme.custom.clickableItem.borderRadius,

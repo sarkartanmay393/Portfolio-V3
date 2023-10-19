@@ -12,6 +12,9 @@ export default async function handler(
     const resp = await axios.post(hashnodeApi, {
       query: queryGeneratorPerPage(pageNo),
     });
+
+    console.log(resp)
+
     return resp.data as HashnodeResponse;
   };
 
