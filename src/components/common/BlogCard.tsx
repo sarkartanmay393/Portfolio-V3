@@ -62,7 +62,7 @@ const whichMonth = (number: string) => {
 export default function BlogCard({ props }: { props: BlogCardProps }) {
   const theme = useTheme();
 
-  const parsedDate = props?.dateAdded?.split('T')[0]?.split('-');
+  const parsedDate = props?.publishedAt?.split('T')[0]?.split('-');
   const formattedDate = `${whichMonth(parsedDate?.at(1) ?? "").slice(0, 3)} ${parsedDate?.at(2)}`;
 
   return (
@@ -190,7 +190,7 @@ export default function BlogCard({ props }: { props: BlogCardProps }) {
                   gap: '6px'
                 }}>
                   <CustomChip label={formattedDate} variant="filled" icon={<CalendarMonthIcon />} />
-                  <CustomChip label={`${props.readTime} mins read`} variant="filled" icon={<AccessTimeIcon />} />
+                  <CustomChip label={`${props.readTimeInMinutes} mins read`} variant="filled" icon={<AccessTimeIcon />} />
                   <CustomChip label={`${props.views} views`} variant="filled" icon={<VisibilityIcon />} />
                 </Box>
               </Box>

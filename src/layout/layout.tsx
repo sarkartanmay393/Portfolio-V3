@@ -6,21 +6,6 @@ import NavigationBar from "~/components/NavigationBar";
 const Layout = ({ Title, children, props }: CAppType) => {
   const theme = useTheme();
 
-  // useEffect(() => {
-  //   // detect when scroll towards down
-  //   // and hide nav pulse
-  //   let prevScrollPosition = 0;
-  //   window.onscroll = () => {
-  //     if (window.scrollY > prevScrollPosition) {
-  //       // setHidePulse(true)
-  //     } else {
-  //       // setHidePulse(false);
-  //     }
-  //     prevScrollPosition = window.scrollY;
-  //   }
-
-  // }, []);
-
   return (
     <>
       <Head>
@@ -29,19 +14,24 @@ const Layout = ({ Title, children, props }: CAppType) => {
         <meta name="author" content="Tanmay Sarkar" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Personal portfolio of a software engineer cum full stack web developer with rich blogs and projects." />
+        <meta
+          name="description"
+          content="Personal portfolio of a software engineer cum full stack web developer with rich blogs and projects."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <CssBaseline enableColorScheme />
 
-      <Box sx={{
-        display: "flex",
-        minHeight: "100vh",
-        flexDirection: "column",
-        alignItems: "center",
-        overflowY: "scroll",
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          minHeight: "100vh",
+          flexDirection: "column",
+          alignItems: "center",
+          overflowY: "scroll",
+        }}
+      >
         <NavigationBar />
 
         <Box
@@ -49,23 +39,21 @@ const Layout = ({ Title, children, props }: CAppType) => {
             [theme.breakpoints.up("mobile")]: {
               width: "90vw",
               marginTop: "3rem",
-              marginBottom: '8rem',
+              marginBottom: "8rem",
             },
             [theme.breakpoints.up("tablet")]: {
               width: "75vw",
-              // marginTop: "6rem",
             },
             [theme.breakpoints.up("laptop")]: {
               width: "65vw",
               marginTop: "108px",
-              marginBottom: '4rem',
+              marginBottom: "4rem",
             },
             ...props,
           }}
         >
           {children}
         </Box>
-
       </Box>
     </>
   );

@@ -24,7 +24,7 @@ export default function IntroArea() {
     >
       <Box
         sx={{
-          marginBottom: '1rem',
+          marginBottom: "1rem",
           display: "flex",
           alignItems: "center",
           gap: "0.8rem",
@@ -49,6 +49,7 @@ export default function IntroArea() {
       </Box>
       <Typography
         sx={{
+          marginTop: "1rem",
           fontWeight: "800",
           color: theme.palette.text.primary,
           lineHeight: "100%",
@@ -99,7 +100,10 @@ export default function IntroArea() {
         <Image
           aria-label="availability dot animation"
           className="green_dot"
-          src={GreenDot as string} alt="availability dot" priority />
+          src={GreenDot as string}
+          alt="availability dot"
+          priority
+        />
         <Typography
           sx={{
             fontWeight: "400",
@@ -181,7 +185,7 @@ export default function IntroArea() {
             backgroundColor: theme.palette.primary.contrastText,
             border: `0.05rem solid ${theme.palette.primary.light}`,
             [theme.breakpoints.between("mobile", "tablet")]: {
-              "min-width": "100%",
+              minWidth: "100%",
             },
             ":hover": {
               backgroundColor: theme.custom.button.onHoverBgColor,
@@ -212,5 +216,4 @@ export default function IntroArea() {
       </Box>
     </Box>
   );
-};
-
+}

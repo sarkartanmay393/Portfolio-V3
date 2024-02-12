@@ -6,7 +6,8 @@ export default interface ClickableItemProps {
   demo?: string;
   madeby?: string;
 
-  readTime?: number;
-  dateAdded?: string;
+  id?: string;
+  readTimeInMinutes?: number;
+  publishedAt?: string;
   views?: number;
 }

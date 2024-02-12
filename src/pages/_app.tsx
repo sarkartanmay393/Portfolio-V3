@@ -5,8 +5,8 @@ import Theme from "../theme/theme";
 import globalStore from "~/store/globalStore";
 import { StoreProvider, createStore } from "easy-peasy";
 import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
-import { SessionProvider } from "next-auth/react"
-import { Analytics } from '@vercel/analytics/react';
+import { SessionProvider } from "next-auth/react";
+import { Analytics } from "@vercel/analytics/react";
 import { useStoreActions, useStoreState } from "~/store/typedHooks";
 
 import { type AppType } from "next/app";
@@ -25,11 +25,18 @@ import "@fontsource/manrope/800.css";
 const store = createStore<GlobalStoreModel>(globalStore);
 
 // Main Component
-const PortfolioApp: AppType<{ session: Session }> = ({ Component, pageProps: { session, ...pageProps } }) => {
+const PortfolioApp: AppType<{ session: Session }> = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => {
   return (
     <SessionProvider session={session}>
       <StoreProvider store={store}>
-        <InsideApp pageProps={pageProps} router={undefined} Component={Component} />
+        <InsideApp
+          pageProps={pageProps}
+          router={undefined}
+          Component={Component}
+        />
       </StoreProvider>
     </SessionProvider>
   );
@@ -37,19 +44,21 @@ const PortfolioApp: AppType<{ session: Session }> = ({ Component, pageProps: { s
 
 // Insider Component
 const InsideApp: AppType = ({ Component, ...pageProps }) => {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const setTheme = useStoreActions((actions) => actions.setTheme);
   const mode = useStoreState((state) => state.theme.mode);
-
 
   // TODO: How to override prev mode with anything else
   const [, setPrevThemeMode] = useState("");
   useEffect(() => {
-    localStorage.setItem('theme', mode);
-    setPrevThemeMode(localStorage.getItem('theme') ?? "");
+    localStorage.setItem("theme", mode);
+    setPrevThemeMode(localStorage.getItem("theme") ?? "");
   }, [mode]);
 
-  useEffect(() => { setTheme(prefersDarkMode ? 'dark' : 'light') }, [prefersDarkMode]);
+  useEffect(() => {
+    setTheme(prefersDarkMode ? "dark" : "light");
+  }, [prefersDarkMode]);
+
   const theme = React.useMemo(() => createTheme(Theme(mode)), [mode]);
 
   return (

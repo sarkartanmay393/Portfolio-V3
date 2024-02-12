@@ -16,35 +16,37 @@ export default function BlogArea() {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const resp = await fetch('/api/blogs', {
-        method: 'GET',
+      const resp = await fetch("/api/blogs", {
+        method: "POST",
+        body: "",
       });
-      const hashnodeResp = await resp.json() as HashnodeResponse;
-      const blogs = hashnodeResp.data.user.publication.posts.map((post) => ({
-        title: post.title,
-        description: post.brief,
-        url: `https://tanmaysarkar.hashnode.dev/${post.slug}`,
-        image: post.coverImage,
-        readTime: post.readTime,
-        dateAdded: post.dateAdded,
-        views: post.views,
-      }));
-      setBlogs(blogs);
+      const hashnodeResp = (await resp.json()) as HashnodeResponse;
+      // const blogs = hashnodeResp.data.publication.posts.map((post) => ({
+      //   title: post.title,
+      //   description: post.brief,
+      //   url: `https://tanmaysarkar.hashnode.dev/${post.slug}`,
+      //   image: post.coverImage,
+      //   readTime: post.readTime,
+      //   dateAdded: post.dateAdded,
+      //   views: post.views,
+      // }));
+      // setBlogs(blogs);
       setLoading(false);
-    }
+    };
 
     void fetchBlogs();
-  }, [])
+  }, []);
 
   return (
-    <Box sx={{
-      gap: '1rem',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: "center",
-      alignItems: "center",
-
-    }}>
+    <Box
+      sx={{
+        gap: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Typography
         sx={{
           fontWeight: "600",
@@ -58,13 +60,16 @@ export default function BlogArea() {
           "::selection": {
             backgroundColor: "rgba(0,0,0,0)",
           },
-        }}>🤖 BLOGS</Typography>
+        }}
+      >
+        🤖 BLOGS
+      </Typography>
       <Card
         elevation={1}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           paddingY: theme.typography.pxToRem(8),
           paddingX: theme.typography.pxToRem(18),
         }}
@@ -82,30 +87,43 @@ export default function BlogArea() {
             },
           }}
         >
-          Several blogs is on {" "}
+          Several blogs is on{" "}
           <Typography
-            onClick={() => { void router.push('https://tanmaysarkar.hashnode.dev/') }}
-            component='span'
+            onClick={() => {
+              void router.push("https://tanmaysarkar.hashnode.dev/");
+            }}
+            component="span"
             sx={{
-              cursor: 'pointer',
+              cursor: "pointer",
               color: theme.palette.text.primary,
-              fontSize: 'inherit',
-              fontWeight: 'inherit',
+              fontSize: "inherit",
+              fontWeight: "inherit",
             }}
           >
             Hashnode
           </Typography>
         </Typography>
       </Card>
-      {loading &&
-        <Box sx={{
-          width: '100%',
-          padding: "1rem",
-        }}>
-          <Loader w="100%" h={184} responsiveHeight={-48} v='rectangular' sx={{ borderRadius: theme.custom.clickableItem.borderRadius }} />
+      {loading && (
+        <Box
+          sx={{
+            width: "100%",
+            padding: "1rem",
+          }}
+        >
+          <Loader
+            w="100%"
+            h={184}
+            responsiveHeight={-48}
+            v="rectangular"
+            sx={{ borderRadius: theme.custom.clickableItem.borderRadius }}
+          />
         </Box>
-      }
-      {!loading && blogs?.map((bd, i) => (<BlogCard key={i} props={{ timeOut: i * 300, ...bd }} />))}
+      )}
+      {!loading &&
+        blogs?.map((bd, i) => (
+          <BlogCard key={i} props={{ timeOut: i * 300, ...bd }} />
+        ))}
     </Box>
   );
 }

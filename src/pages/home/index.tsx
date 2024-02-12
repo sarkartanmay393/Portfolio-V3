@@ -9,11 +9,13 @@ import Footer from "~/components/Footer";
 const HomePage = () => {
   return (
     <Layout Title={"Home | TSX"}>
-      <Box sx={{
-        gap: "6rem",
-        display: "flex",
-        flexDirection: "column",
-      }}>
+      <Box
+        sx={{
+          gap: "6rem",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <IntroArea />
         <ProjectArea />
         <Divider sx={{ opacity: 0.3 }} variant="middle" />

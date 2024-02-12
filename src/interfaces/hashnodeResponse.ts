@@ -1,17 +1,25 @@
 export default interface HashnodeResponse {
   data: {
-    user: {
-      numPosts: number;
-      publication: {
-        posts: [
+    publication: {
+      posts: {
+        totalDocuments: number;
+        pageInfo: {
+          hasNextPage: boolean;
+          endCursor: string;
+        };
+        edges: [
           {
-            title: string;
-            brief: string;
-            slug: string;
-            coverImage: string;
-            readTime: number;
-            dateAdded: string;
-            views: number;
+            nodes: {
+              id: string;
+              title: string;
+              url: string;
+              readTimeInMinutes: number;
+              publishedAt: string;
+              views: number;
+              coverImage: {
+                url: string;
+              };
+            };
           }
         ];
       };
