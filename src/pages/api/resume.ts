@@ -9,7 +9,5 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
   const resp = await fetch(GIST_LINK);
 
   const data = await resp.json();
-  // console.log(data.ProjectDetails);
-
-  return res.status(200).json({ data: data.ProjectDetails });
+  return res.status(200).json({ data: data.ResumeLink });
 }
