@@ -17,9 +17,9 @@ const HomePage = () => {
         }}
       >
         <IntroArea />
-        <ProjectArea />
-        <Divider sx={{ opacity: 0.3 }} variant="middle" />
         <BlogArea />
+        <Divider sx={{ opacity: 0.3 }} variant="middle" />
+        <ProjectArea />
         <Footer />
       </Box>
     </Layout>

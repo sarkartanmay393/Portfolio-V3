@@ -1,41 +1,51 @@
-import { useEffect, useState } from "react";
-import { Box, Card, Typography, useTheme } from "@mui/material";
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { useEffect, useRef, useState } from "react";
+import { Box, Button, Card, CircularProgress, Typography, useTheme } from "@mui/material";
 
 import BlogCard from "../common/BlogCard";
 import Loader from "../common/SkeletonLoader";
 
 import type ClickableItemProps from "~/interfaces/clickableItem";
-import type HashnodeResponse from "~/interfaces/hashnodeResponse";
 import { useRouter } from "next/router";
 
 export default function BlogArea() {
   const theme = useTheme();
-  const [blogs, setBlogs] = useState<ClickableItemProps[]>();
-  const [loading, setLoading] = useState(true);
+  const endCursor = useRef("");
+  const [hasNext, setHasNext] = useState(false);
+  const [blogs, setBlogs] = useState<ClickableItemProps[]>([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      const resp = await fetch("/api/blogs", {
-        method: "POST",
-        body: "",
+  const fetchBlogs = async (ecId: string) => {
+    setLoading(true);
+    try {
+      const resp = await fetch(`/api/blogs?endCursor=${ecId}`, {
+        method: "GET",
       });
-      const hashnodeResp = (await resp.json()) as HashnodeResponse;
-      // const blogs = hashnodeResp.data.publication.posts.map((post) => ({
-      //   title: post.title,
-      //   description: post.brief,
-      //   url: `https://tanmaysarkar.hashnode.dev/${post.slug}`,
-      //   image: post.coverImage,
-      //   readTime: post.readTime,
-      //   dateAdded: post.dateAdded,
-      //   views: post.views,
-      // }));
-      // setBlogs(blogs);
+      const json = (await resp.json()) as {
+        blogs: ClickableItemProps[];
+        total: number;
+        hasNext: boolean;
+        endCursor: string;
+      };
+      setBlogs(json.blogs);
+      setHasNext(json.hasNext);
+      endCursor.current = json.endCursor;
       setLoading(false);
-    };
+    } catch (error: any) {
+      console.log(error?.message);
+    }
+  };
 
-    void fetchBlogs();
+  useEffect(() => {
+    void fetchBlogs(endCursor.current);
   }, []);
+
+  const handleNextPage = () => {
+    void fetchBlogs(endCursor.current);
+  };
 
   return (
     <Box
@@ -124,6 +134,15 @@ export default function BlogArea() {
         blogs?.map((bd, i) => (
           <BlogCard key={i} props={{ timeOut: i * 300, ...bd }} />
         ))}
+      {!loading && hasNext ? (
+        <Button
+          sx={{ marginTop: 2 }}
+          variant="contained"
+          onClick={handleNextPage}
+        >
+          {loading ? <CircularProgress /> : "Next Page"}
+        </Button>
+      ) : null}
     </Box>
   );
 }

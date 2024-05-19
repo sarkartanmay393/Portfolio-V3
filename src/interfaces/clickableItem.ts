@@ -11,3 +11,9 @@ export default interface ClickableItemProps {
   publishedAt?: string;
   views?: number;
 }
+
+export type Project = ClickableItemProps;
+
+export interface PortfolioGist {
+  projectDetails: Project[];
+}
