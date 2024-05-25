@@ -2,7 +2,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect, useRef, useState } from "react";
-import { Box, Button, Card, CircularProgress, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CircularProgress,
+  Typography,
+  useTheme,
+} from "@mui/material";
 
 import BlogCard from "../common/BlogCard";
 import Loader from "../common/SkeletonLoader";
@@ -10,16 +17,26 @@ import Loader from "../common/SkeletonLoader";
 import type ClickableItemProps from "~/interfaces/clickableItem";
 import { useRouter } from "next/router";
 
-export default function BlogArea() {
+interface Props {
+  inHome?: boolean;
+}
+
+export default function BlogArea({ inHome = false }: Props) {
   const theme = useTheme();
   const endCursor = useRef("");
+  const uniqueBlogs = useRef(new Set<ClickableItemProps>());
   const [hasNext, setHasNext] = useState(false);
   const [blogs, setBlogs] = useState<ClickableItemProps[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadMoreLoading, setLoadMoreLoading] = useState(false);
   const router = useRouter();
 
   const fetchBlogs = async (ecId: string) => {
-    setLoading(true);
+    if (blogs.length) {
+      setLoadMoreLoading(true);
+    } else {
+      setLoading(true);
+    }
     try {
       const resp = await fetch(`/api/blogs?endCursor=${ecId}`, {
         method: "GET",
@@ -30,12 +47,22 @@ export default function BlogArea() {
         hasNext: boolean;
         endCursor: string;
       };
-      setBlogs(json.blogs);
+      setBlogs(() => {
+        json.blogs.forEach((blog) => {
+          uniqueBlogs.current.add(blog);
+        });
+        return [...uniqueBlogs.current];
+      });
       setHasNext(json.hasNext);
       endCursor.current = json.endCursor;
-      setLoading(false);
     } catch (error: any) {
       console.log(error?.message);
+    } finally {
+      if (blogs.length) {
+        setLoadMoreLoading(false);
+      } else {
+        setLoading(false);
+      }
     }
   };
 
@@ -45,6 +72,10 @@ export default function BlogArea() {
 
   const handleNextPage = () => {
     void fetchBlogs(endCursor.current);
+  };
+
+  const handleViewMore = () => {
+    void router.push("/blogs");
   };
 
   return (
@@ -131,16 +162,17 @@ export default function BlogArea() {
         </Box>
       )}
       {!loading &&
-        blogs?.map((bd, i) => (
+        blogs.length &&
+        (inHome ? blogs.slice(0, 3) : blogs).map((bd, i) => (
           <BlogCard key={i} props={{ timeOut: i * 300, ...bd }} />
         ))}
-      {!loading && hasNext ? (
+      {!loading && (hasNext || inHome) ? (
         <Button
           sx={{ marginTop: 2 }}
           variant="contained"
-          onClick={handleNextPage}
+          onClick={inHome ? handleViewMore : handleNextPage}
         >
-          {loading ? <CircularProgress /> : "Next Page"}
+          {loadMoreLoading ? <CircularProgress /> : "View More"}
         </Button>
       ) : null}
     </Box>

@@ -17,7 +17,7 @@ const HomePage = () => {
         }}
       >
         <IntroArea />
-        <BlogArea />
+        <BlogArea inHome />
         <Divider sx={{ opacity: 0.3 }} variant="middle" />
         <ProjectArea />
         <Footer />
