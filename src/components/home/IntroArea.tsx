@@ -16,6 +16,7 @@ export default function IntroArea() {
   return (
     <Box
       sx={{
+        marginTop: "3rem",
         gap: "1.6rem",
         display: "flex",
         flexDirection: "column",
